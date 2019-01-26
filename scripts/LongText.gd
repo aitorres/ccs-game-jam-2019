@@ -9,6 +9,8 @@ export(bool) var start = false
 export(bool) var startOnFirstLine = false
 export(bool) var done = false
 
+var triggered = -1
+
 var arrText = []
 var currText = ""
 var curPos = 0
@@ -28,6 +30,8 @@ var bbcodeRegex = RegEx.new()
 var background = null
 
 func reset_text(state):
+	print("Hola")
+	print(state)
 	start = state
 	done = false
 	config_text()
@@ -43,7 +47,6 @@ func reset_text(state):
 
 func _ready():
 	reset_text(start)
-	
 
 func config_text():
 	if longText != null:
@@ -135,6 +138,7 @@ func animateText(delta):
 			start = false
 			done = true
 			clear()
+			get_parent().hide()
 
 
 func charsToSkip():
@@ -150,6 +154,9 @@ func charsToSkip():
 
 	if regexRes:
 		return regexRes.get_string().length()
-	
-	
 
+
+func _on_Area2D_body_entered(body):
+	triggered += 1
+	if triggered == 1:
+		reset_text(true)
