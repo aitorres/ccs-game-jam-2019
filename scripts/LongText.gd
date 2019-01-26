@@ -7,6 +7,7 @@ export(float, 0, 1, 0.00001) var charWaitTime = 0.001
 export(String, MULTILINE) var longText
 export(bool) var start = false
 export(bool) var startOnFirstLine = false
+export(bool) var done = false
 
 var arrText = []
 var currText = ""
@@ -28,6 +29,7 @@ var background = null
 
 func reset_text(state):
 	start = state
+	done = false
 	config_text()
 	if background == null:
 		background = find_node("Background")
@@ -137,6 +139,7 @@ func animateText(delta):
 		else:
 			print("Text Done")
 			start = false
+			done = true
 			clear()
 
 
