@@ -97,12 +97,6 @@ func animateText(delta):
 					print("Clear")
 
 				currLine += "\n"
-
-				if currLine.find("\\p") != -1:
-					currLine = currLine.replace("\\p", "")
-					print("No Center")
-				else:
-					currLine = "[center]" + currLine + "[/center]"
 				
 				visible_characters = 0
 				currText += currLine 
