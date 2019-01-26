@@ -74,7 +74,7 @@ func config_text():
 	imgRegex.compile("\\[img\\].*\\[/img\\]")
 	bbcodeRegex.compile("\\[[^\\]]*\\]")
 	charWaitRegex.compile("\\[char=(?<val>[-+]?[0-9]*\\.?[0-9]+)\\]")
-	lineWaitRegex.compile("[-+]?[0-9]*\\.?[0-9]+")
+	lineWaitRegex.compile("\\[line=(?<val>[-+]?[0-9]*\\.?[0-9]+)\\]")
 	
 
 
