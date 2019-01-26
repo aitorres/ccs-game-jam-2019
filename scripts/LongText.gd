@@ -5,7 +5,7 @@ extends RichTextLabel
 export(float, 0, 20, 0.01) var lineWaitTime = 2
 export(float, 0, 1, 0.00001) var charWaitTime = 0.001
 export(String, MULTILINE) var longText
-export(bool) var startOnReady = false
+export(bool) var start = false
 export(bool) var startOnFirstLine = false
 
 var arrText = []
@@ -25,8 +25,7 @@ var imgRegex = RegEx.new()
 var bbcodeRegex = RegEx.new()
 
 func _ready():
-	if startOnReady:
-		config_text()
+	config_text()
 	
 
 func config_text():
@@ -62,7 +61,7 @@ func _process(delta):
 	# Called every frame. Delta is time since last frame.
 	# Update game logic here.
 
-	if !textComplete || (textComplete && !charComplete):
+	if start && (!textComplete || (textComplete && !charComplete)):
 		if charComplete:
 			if lineAccTime < lineWaitTime:
 				lineAccTime += delta
