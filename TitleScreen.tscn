@@ -15,7 +15,6 @@ func _process(delta):
 	if Input.is_action_pressed(\"ui_accept\"):
         get_tree().change_scene(\"res://IntroScreen.tscn\")
 "
-_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="DynamicFont" id=2]
 
@@ -35,7 +34,7 @@ extra_spacing_char = 5
 font_data = ExtResource( 1 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
 
-[node name="TitleScreen" type="Control" index="0"]
+[node name="TitleScreen" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -48,6 +47,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = SubResource( 1 )
+_sections_unfolded = [ "Pause" ]
 
 [node name="Container2" type="Container" parent="." index="0"]
 
@@ -111,7 +111,7 @@ size_flags_vertical = 1
 
 [node name="Sprite" type="Sprite" parent="Container3" index="0"]
 
-position = Vector2( 359.769, 102.978 )
+position = Vector2( 239.838, 100.206 )
 scale = Vector2( -2.30221, -1.63495 )
 z_index = -1
 texture = ExtResource( 2 )

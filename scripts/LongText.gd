@@ -32,7 +32,7 @@ func reset_text(state):
 	done = false
 	config_text()
 	if background == null:
-		background = find_node("Background")
+		background = get_parent()
 	
 	if start:
 		background.show()
