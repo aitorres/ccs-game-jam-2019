@@ -17,6 +17,12 @@ var lineAccTime = 0
 var charAccTime = 0
 var charComplete = false
 var textSize = 0
+var textComplete = false
+var linePos = 0
+var currLine = ""
+
+var imgRegex = RegEx.new()
+var bbcodeRegex = RegEx.new()
 
 func _ready():
 	if startOnReady:
@@ -30,6 +36,8 @@ func config_text():
 	else:
 		longText = []
 		textSize = 0
+		textComplete = true
+		charComplete = true
 		return
 	
 	if startOnFirstLine:
@@ -39,10 +47,14 @@ func config_text():
 	else:
 		currText = ""
 		curPos = 0
+		linePos = 0
 		charComplete = true
 	
 	visible_characters = 0
 	parse_bbcode(currText)
+
+	imgRegex.compile("\\[img\\].*\\[/img\\]")
+	bbcodeRegex.compile("\\[[^\\]]*\\]")
 	
 
 
@@ -50,13 +62,13 @@ func _process(delta):
 	# Called every frame. Delta is time since last frame.
 	# Update game logic here.
 
-	if curPos < textSize || charAccTime > 0:
+	if !textComplete || (textComplete && !charComplete):
 		if charComplete:
 			if lineAccTime < lineWaitTime:
 				lineAccTime += delta
 			else:
 				print(lineAccTime)
-				var currLine = arrText[curPos].replace("\\n", "\n")
+				currLine = arrText[curPos].replace("\\n", "\n")
 				currLine = currLine.replace("\\t", "\t")
 				if currLine.find("\\c") != -1:
 					currText = ""
@@ -71,22 +83,43 @@ func _process(delta):
 				visible_characters = 0
 				lineAccTime = 0
 				charAccTime = 0
+				linePos = 0
 				charComplete = false
+				textComplete = curPos >= textSize
 				print("Line Complete")
 		else:
 			if charAccTime < charWaitTime:
 				charAccTime += delta
 			else:
 				charAccTime = 0
+				#var advance = charsToSkip()
+				var advance = 1
+				print(String(advance)+":"+currLine.substr(linePos, advance))
 				visible_characters += 1
-				print(targetChar)
-				print(visible_characters)
-				targetChar -= 1
+				targetChar -= advance
+				linePos += advance
+				
+				
 				if targetChar <= 0:
 					charComplete = true
 					charAccTime = 0
+					lineAccTime = 0
 					print("Char Complete")
 
 
-		
+func charsToSkip():
+	if currLine[linePos] != "[":
+		return 1
+	
+	var regexRes = imgRegex.search(currLine, linePos)
+
+	if regexRes:
+		return regexRes.get_string().length()
+
+	regexRes = bbcodeRegex.search(currLine, linePos)
+
+	if regexRes:
+		return regexRes.get_string().length()
+	
+	
 
