@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-export (int) var speed = 200
+export (bool) var can_move = true
+export (int) var speed = 160
 
 var velocity = Vector2()
 
@@ -18,4 +19,5 @@ func get_input():
 
 func _physics_process(delta):
     get_input()
-    move_and_slide(velocity)
+    if can_move:
+        move_and_slide(velocity)

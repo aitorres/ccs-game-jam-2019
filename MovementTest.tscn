@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 9.37811 )
+extents = Vector2( 9.01318, 3.64296 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -36,7 +36,6 @@ __meta__ = {
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." index="0"]
 
-editor/display_folded = true
 position = Vector2( 1.34113, 41.2303 )
 input_pickable = false
 collision_layer = 1
@@ -47,18 +46,19 @@ _sections_unfolded = [ "collision" ]
 __meta__ = {
 "_edit_group_": true
 }
-speed = 200
+can_move = true
+speed = 250
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="0"]
 
-position = Vector2( 219.456, 258.988 )
+position = Vector2( 217.401, 319.007 )
 scale = Vector2( 2.94055, 9.35437 )
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="KinematicBody2D" index="1"]
+[node name="Sprite" type="Sprite" parent="KinematicBody2D/CollisionShape2D" index="0"]
 
-position = Vector2( 220.185, 258.491 )
-scale = Vector2( 1.07644, 1.00893 )
+position = Vector2( 0.173996, -5.74063 )
+scale = Vector2( 0.366068, 0.107857 )
 texture = ExtResource( 2 )
 
 [node name="Left Wall" type="StaticBody2D" parent="." index="1"]

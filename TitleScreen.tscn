@@ -15,6 +15,7 @@ func _process(delta):
 	if Input.is_action_pressed(\"ui_accept\"):
         get_tree().change_scene(\"res://IntroScreen.tscn\")
 "
+_sections_unfolded = [ "Resource" ]
 
 [sub_resource type="DynamicFont" id=2]
 
@@ -110,7 +111,7 @@ size_flags_vertical = 1
 
 [node name="Sprite" type="Sprite" parent="Container3" index="0"]
 
-position = Vector2( 239.838, 100.206 )
+position = Vector2( 359.769, 102.978 )
 scale = Vector2( -2.30221, -1.63495 )
 z_index = -1
 texture = ExtResource( 2 )
