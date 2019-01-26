@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/sprites/Scene 6/clouds-4.png" type="Texture" id=4]
 [ext_resource path="res://assets/montain background.png" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/Scene 6/mountains.png" type="Texture" id=6]
-[ext_resource path="res://assets/sprites/Scene 6/mountain-big.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/Scene 6/background mountain.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -26,7 +26,7 @@ extents = Vector2( 13.7623, 10 )
 [sub_resource type="Animation" id=4]
 
 resource_name = "clouds"
-length = 1.5
+length = 10.0
 loop = true
 step = 0.1
 tracks/0/type = "value"
@@ -36,10 +36,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 3, 6, 8, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 85.6198, 10.2744 ), Vector2( 88.6198, 13.2744 ), Vector2( 91.6198, 8.27437 ), Vector2( 85.6198, 10.2744 ) ]
+"values": [ Vector2( 48.9671, -39.4105 ), Vector2( 80.4747, -17.6768 ), Vector2( 81.0312, 0.943817 ), Vector2( 85.6198, 10.2744 ), Vector2( 48.9671, -39.4105 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Container/Sprite2:position")
@@ -48,10 +48,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 3, 6, 8, 10 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 506.869, 20.5488 ), Vector2( 509.869, 24.5488 ), Vector2( 512.369, 18.5488 ), Vector2( 506.869, 20.5488 ) ]
+"values": [ Vector2( 617.642, -42.1682 ), Vector2( 621.456, -21.8781 ), Vector2( 659.795, -22.991 ), Vector2( 652.666, -31.5796 ), Vector2( 617.642, -42.1682 ) ]
 }
 
 [node name="Container" type="Container" index="0"]
@@ -66,9 +66,6 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." index="0"]
 
@@ -221,13 +218,10 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="Container" index="0"]
 
-position = Vector2( 106.045, 26.9985 )
+position = Vector2( 79.2674, -18.5096 )
 scale = Vector2( 0.4, 0.4 )
 z_index = 1
 texture = ExtResource( 3 )
@@ -235,7 +229,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Sprite2" type="Sprite" parent="Container" index="1"]
 
-position = Vector2( 596.961, 8.75365 )
+position = Vector2( 621.31, -22.6555 )
 scale = Vector2( 0.7, 0.7 )
 z_index = 1
 texture = ExtResource( 4 )
@@ -267,6 +261,7 @@ __meta__ = {
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TextureRect" index="0"]
 
+editor/display_folded = true
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -285,7 +280,7 @@ texture = ExtResource( 6 )
 
 visible = false
 build_mode = 0
-polygon = PoolVector2Array( 5.59095, 450.287, 115.823, 413.543, 206.013, 363.438, 302.884, 293.29, 439.839, 208.111, 479.923, 194.749, 493.285, 201.43, 541.72, 219.802, 653.622, 256.546, 733.791, 298.301, 828.992, 370.119, 982.649, 436.926, 1067.83, 450.287, 1067.83, -2.3325, -2.75997, 2.67804 )
+polygon = PoolVector2Array( 4.11882, 420.2, 101.86, 376.216, 188.304, 323.774, 300.028, 218.188, 421.574, 132.247, 459.578, 97.5504, 554.169, 137.158, 631.517, 159.257, 754.291, 250.109, 814.444, 298.931, 905.589, 357.427, 977.689, 403.68, 1066.11, 420.005, 1067.83, -2.3325, -2.75997, 2.67804 )
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect" index="1"]
 
@@ -293,9 +288,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = -125.0
-margin_right = 1068.0
-margin_bottom = 542.0
+margin_left = -1.0
+margin_top = 101.0
+margin_right = 1067.0
+margin_bottom = 543.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
