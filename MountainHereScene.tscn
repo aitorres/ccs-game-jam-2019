@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://WASDmovement.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/characters/here_man.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://assets/montain background.png" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/Scene 6/mountains.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/Scene 6/background mountain.png" type="Texture" id=7]
+[ext_resource path="res://assets/fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=8]
+[ext_resource path="res://scripts/LongText.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -53,6 +55,19 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 617.642, -42.1682 ), Vector2( 621.456, -21.8781 ), Vector2( 659.795, -22.991 ), Vector2( 652.666, -31.5796 ), Vector2( 617.642, -42.1682 ) ]
 }
+
+[sub_resource type="Theme" id=5]
+
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="DynamicFont" id=6]
+
+size = 70
+use_mipmaps = false
+use_filter = false
+extra_spacing_char = 5
+font_data = ExtResource( 8 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [node name="Container" type="Container" index="0"]
 
@@ -204,6 +219,7 @@ blend_times = [  ]
 
 [node name="Container" type="Container" parent="." index="6"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -221,7 +237,7 @@ size_flags_vertical = 1
 
 [node name="Sprite" type="Sprite" parent="Container" index="0"]
 
-position = Vector2( 79.2674, -18.5096 )
+position = Vector2( 50.7505, -38.1803 )
 scale = Vector2( 0.4, 0.4 )
 z_index = 1
 texture = ExtResource( 3 )
@@ -229,7 +245,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Sprite2" type="Sprite" parent="Container" index="1"]
 
-position = Vector2( 621.31, -22.6555 )
+position = Vector2( 617.858, -41.0197 )
 scale = Vector2( 0.7, 0.7 )
 z_index = 1
 texture = ExtResource( 4 )
@@ -237,6 +253,7 @@ _sections_unfolded = [ "Animation", "Material", "Region", "Transform", "Visibili
 
 [node name="TextureRect" type="TextureRect" parent="." index="7"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -301,5 +318,108 @@ size_flags_vertical = 1
 texture = ExtResource( 7 )
 expand = true
 stretch_mode = 0
+
+[node name="Container2" type="Container" parent="." index="8"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 111.0
+margin_top = 584.0
+margin_right = 1169.0
+margin_bottom = 722.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = SubResource( 5 )
+_sections_unfolded = [ "Focus", "Material", "Mouse", "Size Flags", "Theme" ]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Container" type="Container" parent="Container2" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 9.0
+margin_top = 7.0
+margin_right = 1048.0
+margin_bottom = 127.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Background" type="Panel" parent="Container2/Container" index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -519.5
+margin_top = -60.0
+margin_right = 519.5
+margin_bottom = 60.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Grow Direction", "Material", "Rect", "Size Flags", "Theme", "Visibility", "custom_styles" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Container2/Container/Background" index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.5
+margin_top = -60.0
+margin_right = 512.5
+margin_bottom = 60.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+bbcode_text = "awefwaefwafawefwef"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "awefwaefwafawefwef"
+scroll_active = false
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 9 )
+_sections_unfolded = [ "BBCode", "Size Flags", "Theme", "Visibility", "custom_fonts" ]
+lineWaitTime = 0.5
+charWaitTime = 0.1
+longText = "\\\\pThis is a test
+\\\\cThis is another test
+\\\\cBye!"
+start = true
+startOnFirstLine = false
+done = false
 
 
