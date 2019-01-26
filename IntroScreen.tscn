@@ -119,9 +119,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -3.0
-margin_top = 1.0
-margin_bottom = -373.0
+margin_left = -1.0
+margin_top = -2.0
+margin_right = -1.0
+margin_bottom = -370.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 mouse_filter = 0
@@ -143,14 +144,20 @@ scroll_following = true
 selection_enabled = false
 override_selected_font_color = false
 script = ExtResource( 3 )
-_sections_unfolded = [ "Anchor", "BBCode", "Size Flags", "custom_fonts", "custom_styles" ]
-lineWaitTime = 1.0
+_sections_unfolded = [ "Anchor", "BBCode", "Rect", "Size Flags", "custom_fonts", "custom_styles" ]
+lineWaitTime = 0.5
 charWaitTime = 0.1
 longText = "Hola [color=red]Adios[/color]
 Probando \\\\nLineas [img]res://icon.png[/img]
 \\\\t[color=aqua]Tabs[/color]
 \\\\cVacio"
-startOnReady = true
+start = true
 startOnFirstLine = false
+
+[node name="Background" type="Sprite" parent="Text2" index="1"]
+
+position = Vector2( 1.54221, -31.6526 )
+scale = Vector2( 1024.62, 322.143 )
+_sections_unfolded = [ "Transform" ]
 
 
