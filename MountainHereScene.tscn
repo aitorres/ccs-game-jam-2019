@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://SceneManager.gd" type="Script" id=1]
 [ext_resource path="res://WASDmovement.gd" type="Script" id=2]
@@ -8,8 +8,9 @@
 [ext_resource path="res://assets/montain background.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/Scene 6 H - Mountain/mountains.png" type="Texture" id=7]
 [ext_resource path="res://assets/sprites/Scene 6 H - Mountain/background mountain.png" type="Texture" id=8]
-[ext_resource path="res://assets/fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=9]
-[ext_resource path="res://scripts/LongText.gd" type="Script" id=10]
+[ext_resource path="res://Mark.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=10]
+[ext_resource path="res://scripts/LongText.gd" type="Script" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -77,7 +78,7 @@ size = 65
 use_mipmaps = false
 use_filter = false
 extra_spacing_char = 5
-font_data = ExtResource( 9 )
+font_data = ExtResource( 10 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [node name="root" type="Container" index="0"]
@@ -337,6 +338,9 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 _sections_unfolded = [ "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Area2D" index="0"]
 
@@ -356,6 +360,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Area2D2" index="0"]
 
@@ -364,9 +369,19 @@ scale = Vector2( 50.101, 4.01684 )
 shape = SubResource( 6 )
 _sections_unfolded = [ "Z Index" ]
 
-[node name="textbox" type="Container" parent="." index="8"]
+[node name="Mark" parent="." index="8" instance=ExtResource( 9 )]
 
-editor/display_folded = true
+startActive = true
+nextMark = NodePath("../Mark2")
+poemPath = NodePath("../textbox/Container/Background/poem")
+
+[node name="Mark2" parent="." index="9" instance=ExtResource( 9 )]
+
+position = Vector2( 1103.62, 526.142 )
+poemPath = NodePath("../textbox/Container/Background/poem")
+
+[node name="textbox" type="Container" parent="." index="10"]
+
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -457,7 +472,7 @@ scroll_active = false
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-script = ExtResource( 10 )
+script = ExtResource( 11 )
 _sections_unfolded = [ "BBCode", "Size Flags", "Theme", "Visibility", "custom_constants", "custom_fonts" ]
 lineWaitTime = 0.5
 charWaitTime = 0.1
