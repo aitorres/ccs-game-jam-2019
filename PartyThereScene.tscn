@@ -67,7 +67,7 @@ func fadeOut():
 	if change_song:
 		AudioManager.changeSong(next_song)
 	yield(get_tree().create_timer(fade_out_time), \"timeout\")
-	get_tree().change_scene(next_scene)
+	get_tree().change_scene(\"res://MountainHereScene.tscn\")
 
 func _on_Area2D_body_entered(body):
 	if not (body is StaticBody2D):
