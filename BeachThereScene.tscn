@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://SceneManager.gd" type="Script" id=1]
 [ext_resource path="res://WASDmovement.gd" type="Script" id=2]
@@ -6,21 +6,20 @@
 [ext_resource path="res://assets/sprites/Scene 6 H - Mountain/clouds-3.png" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/Scene 6 H - Mountain/clouds-4.png" type="Texture" id=5]
 [ext_resource path="res://assets/beach background.png" type="Texture" id=6]
-[ext_resource path="res://Mark.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=8]
-[ext_resource path="res://scripts/LongText.gd" type="Script" id=9]
+[ext_resource path="res://assets/fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=7]
+[ext_resource path="res://scripts/LongText.gd" type="Script" id=8]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 32.25 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 13.7623, 10 )
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 15.2482, 9.37811 )
@@ -76,7 +75,7 @@ size = 65
 use_mipmaps = false
 use_filter = false
 extra_spacing_char = 5
-font_data = ExtResource( 8 )
+font_data = ExtResource( 7 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [node name="root" type="Container" index="0"]
@@ -94,10 +93,10 @@ size_flags_vertical = 1
 script = ExtResource( 1 )
 change_song = true
 next_song = 1
-next_scene = "res://ParkScene.tscn"
+next_scene = "res://AbsolutionRight.tscn"
 poem_container_path = "textbox/Container/Background/poem"
 use_final_text = true
-longText = "[line=1.0]time to go back and shine like a star"
+longText = "[line=1.0]i will come back very soon"
 
 [node name="Limites" type="Container" parent="." index="0"]
 
@@ -140,7 +139,7 @@ __meta__ = {
 position = Vector2( -5.5, 0 )
 scale = Vector2( 1.42308, 1 )
 z_index = -1
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Z Index" ]
 
 [node name="Left Wall2" type="StaticBody2D" parent="Limites" index="1"]
@@ -168,7 +167,7 @@ __meta__ = {
 position = Vector2( -5.5, 0 )
 scale = Vector2( 1.42308, 1 )
 z_index = -1
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Z Index" ]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Limites" index="2"]
@@ -193,7 +192,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/StaticBody2D" index="0"]
 
 z_index = -1
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 _sections_unfolded = [ "Z Index" ]
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Limites" index="3"]
@@ -217,7 +216,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Limites/StaticBody2D2" index="0"]
 
 position = Vector2( 0.0503979, -48.5917 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 _sections_unfolded = [ "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
@@ -244,7 +243,7 @@ speed = 160
 
 position = Vector2( 316.823, 330.109 )
 scale = Vector2( 1.17722, 1.81462 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 _sections_unfolded = [ "Z Index" ]
 
 [node name="Sprite" type="Sprite" parent="KinematicBody2D/CollisionShape2D" index="0"]
@@ -350,16 +349,6 @@ scale = Vector2( 0.444163, 0.855804 )
 shape = SubResource( 5 )
 _sections_unfolded = [ "Z Index" ]
 
-[node name="Mark" parent="Background/Area2D" index="1" instance=ExtResource( 7 )]
-
-position = Vector2( 45.148, 210.381 )
-scale = Vector2( 0.609755, 0.755531 )
-z_index = 200
-_sections_unfolded = [ "Z Index" ]
-startActive = true
-nextMark = NodePath("../Mark2")
-poemPath = NodePath("../textbox/Container/Background/poem")
-
 [node name="Area2D2" type="Area2D" parent="Background" index="2"]
 
 position = Vector2( 8.24066, 179.933 )
@@ -380,17 +369,8 @@ scale = Vector2( 4.90987, 4.01684 )
 shape = SubResource( 6 )
 _sections_unfolded = [ "Z Index" ]
 
-[node name="Mark2" parent="Background/Area2D2" index="1" instance=ExtResource( 7 )]
-
-position = Vector2( 512.683, 16.7928 )
-scale = Vector2( 1.8791, 1.03501 )
-z_index = 200
-_sections_unfolded = [ "Z Index" ]
-poemPath = NodePath("../textbox/Container/Background/poem")
-
 [node name="textbox" type="Container" parent="." index="5"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -481,22 +461,24 @@ scroll_active = false
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-script = ExtResource( 9 )
+script = ExtResource( 8 )
 _sections_unfolded = [ "BBCode", "Size Flags", "Theme", "Visibility", "custom_constants", "custom_fonts" ]
 lineWaitTime = 0.5
 charWaitTime = 0.1
 vibrateWaitTime = 0.001
-longText = "i am not reaching out in the dark
-\\\\cfor today i have conquered the mountain
-\\\\cand even though it felt like a monster at first
-\\\\csometimes a little push is all you need
-\\\\cand the fresh air\\nand the breeze around you
-\\\\ccan make you forget a bad day
-\\\\cor week or year
-\\\\ceven if just for a moment
-\\\\cbecause there is nothing more fulfilling
-\\\\cthan allowing yourself to find your clear sky
-\\\\cand see the bright stars"
+longText = "i smile
+\\\\ci smile at this beautiful place
+\\\\cand the coast and the water
+\\\\cand the sun that enbrightens the sand
+\\\\cthis places feels like home to me
+\\\\ceven though i am so far away
+\\\\cand if i coul i think i would stay here forever
+\\\\cbut i can not do that
+\\\\cat least i can come back every now and then
+\\\\cand for day or two
+\\\\cunder this bright and beautiful sun
+\\\\cfeel again that i have found
+\\\\ca place where i belong"
 start = false
 startOnFirstLine = false
 vibrate = false
@@ -505,6 +487,6 @@ vibrateMax = 20
 
 [connection signal="body_entered" from="Background/Area2D" to="textbox/Container/Background/poem" method="_on_Area2D_body_entered"]
 
-[connection signal="body_entered" from="Background/Area2D2" to="." method="_on_try_to_leave"]
+[connection signal="body_entered" from="Background/Area2D2" to="." method="_on_try_to_leave2"]
 
 
