@@ -221,6 +221,10 @@ func vibrate():
 
 	rect_position = textCenter + Vector2(0, mov)
 
+
+var text_reading = false
+
 func _on_Area2D_body_entered(body):
-	if not (body is StaticBody2D):
+	if not (body is StaticBody2D) && not text_reading:
+		text_reading = true
 		reset_text(true)
