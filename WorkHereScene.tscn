@@ -462,8 +462,8 @@ longText = "empty chairs and empty faces fill this place
 \\\\cdeny it, but i am alone
 \\\\ccolor is nothing\\nbut a deceiving mirror
 \\\\creflecting a perpetual lie
-\\\\cis his okay?\\nno, it is not
-\\\\ci am far away from home
+\\\\c[vibrate=0.2,5]is this okay, i ask myself\\nit is not, i know
+\\\\cfor i am far away from home
 \\\\cand the clock is ticking away"
 start = false
 startOnFirstLine = false
