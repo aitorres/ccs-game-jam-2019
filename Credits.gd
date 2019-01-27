@@ -5,7 +5,7 @@ var credits = [
 	"PROGRAMMING LEAD\nChristian Oliveros",
 	"MUSIC LEAD\nDavid Rodriguez",
 	"DESIGN LEAD\nAntonella Requena",
-	"INSPIRED BY\nLOS DIAS ARQUEADOS\nWRITTEN BYLUIS EDUARDO BARRAZA",
+	"INSPIRED BY\nLOS DIAS ARQUEADOS\nWRITTEN BY\nLUIS EDUARDO BARRAZA",
 	"FROM USB VE\nWITH LOVE",
 	"Caracas Game Jam\n2019",
 	"January 25 to\nJanuary 27\n2019",
