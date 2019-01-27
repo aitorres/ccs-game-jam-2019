@@ -12,7 +12,6 @@ var credits = [
 	"LEFT BEHIND\nMANY HOMES AGO",
 	"FAR AWAY\nWITHIN A STARE\"",
 	"- LUIS EDUARDO BARRAZA\n2017",
-	""
 ]
 
 var counter = 0
@@ -21,6 +20,10 @@ func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	pass
+	
+func _process(delta):
+	if Input.is_action_pressed("ui_skip"):
+    	counter = credits.size()
 
 func next_credit():
 	if (counter < credits.size()):

@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://IntroScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=2]
-[ext_resource path="res://scripts/LongText.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFontData" id=1]
 
@@ -51,21 +50,6 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="DynamicFontData" id=4]
-
-hinting = 2
-font_path = ""
-_sections_unfolded = [ "Resource" ]
-
-[sub_resource type="DynamicFont" id=5]
-
-size = 70
-use_mipmaps = true
-use_filter = false
-font_data = ExtResource( 2 )
-fallback/0 = SubResource( 4 )
-_sections_unfolded = [ "Extra Spacing", "Font", "Font/fallback", "Resource", "Settings" ]
-
 [node name="Credits" type="Control"]
 
 anchor_left = 0.0
@@ -113,62 +97,12 @@ anims/fade = SubResource( 3 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="Panel" type="Panel" parent="." index="2"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1031.0
-margin_bottom = 268.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-
-[node name="Text2" type="RichTextLabel" parent="Panel" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -1.0
-margin_top = -2.0
-margin_right = -1.0
-margin_bottom = -42.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 5
-custom_fonts/normal_font = SubResource( 5 )
-bbcode_enabled = true
-bbcode_text = "
-"
-visible_characters = -1
-percent_visible = 1.0
-meta_underlined = true
-tab_size = 4
-text = "
-"
-scroll_active = false
-scroll_following = true
-selection_enabled = false
-override_selected_font_color = false
-script = ExtResource( 3 )
-_sections_unfolded = [ "Anchor", "BBCode", "Rect", "Size Flags", "custom_fonts", "custom_styles" ]
-lineWaitTime = 0.5
-charWaitTime = 0.1
-longText = "Hola [color=red]Adios[/color]
-Probando \\\\nLineas [img]res://icon.png[/img]
-\\\\t[color=aqua]Tabs[/color]
-\\\\cVacio
-\\\\c[char=0.01]Asdasdasdadadada"
-start = true
-startOnFirstLine = false
-done = false
-
-
+stream = null
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+_sections_unfolded = [ "Pause" ]
