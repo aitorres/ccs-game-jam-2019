@@ -65,7 +65,7 @@ size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Visibility" ]
 change_song = true
-next_song = 4
+next_song = 0
 next_scene = "res://MountainHereScene.tscn"
 
 [node name="Text" type="Label" parent="." index="0"]

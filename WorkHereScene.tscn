@@ -51,6 +51,7 @@ func _on_Area2D_body_entered(body):
 			aux_node.reset_config()
 			aux_node.reset_text(true)
 			yield(get_tree().create_timer(3.5), \"timeout\")
+			AudioManager.changeSong(next_song)
 			get_tree().change_scene(next_scene)
 		else:
 			if aux_node.done:
@@ -169,7 +170,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 180, 44.2918 )
 
-[node name="root" type="Container" index="0"]
+[node name="root" type="Container"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -182,7 +183,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = SubResource( 1 )
-next_song = 1
+next_song = 3
 next_scene = "res://HomeThereScene.tscn"
 poem_container_path = "textbox/Container/Background/poem"
 
