@@ -26,6 +26,8 @@ var currLine = ""
 
 var imgRegex = RegEx.new()
 var bbcodeRegex = RegEx.new()
+var charWaitRegex = RegEx.new()
+var lineWaitRegex = RegEx.new()
 
 var background = null
 
@@ -74,7 +76,9 @@ func config_text():
 
 	imgRegex.compile("\\[img\\].*\\[/img\\]")
 	bbcodeRegex.compile("\\[[^\\]]*\\]")
-
+	charWaitRegex.compile("\\[char=(?<val>[-+]?[0-9]*\\.?[0-9]+)\\]")
+	lineWaitRegex.compile("\\[line=(?<val>[-+]?[0-9]*\\.?[0-9]+)\\]")
+	
 
 
 func _process(delta):
@@ -98,6 +102,20 @@ func animateText(delta):
 					currText = ""
 					currLine = currLine.replace("\\c", "")
 					print("Clear")
+				
+				var regexRes = charWaitRegex.search(currLine)
+
+				if regexRes:
+					currLine = charWaitRegex.sub(currLine, "")
+					charAccTime =  float(regexRes.get_string("val"))
+					print("charWait=" + regexRes.get_string("val"))
+
+				regexRes = lineWaitRegex.search(currLine)
+
+				if regexRes:
+					currLine = lineWaitRegex.sub(currLine, "")
+					lineWaitTime =  float(regexRes.get_string("val"))
+					print("lineWait=" + regexRes.get_string("val"))
 
 				currLine += "\n"
 
@@ -119,7 +137,7 @@ func animateText(delta):
 				charAccTime = 0
 				#var advance = charsToSkip()
 				var advance = 1
-				print(String(advance)+":"+currLine.substr(linePos, advance))
+				#print(String(advance)+":"+currLine.substr(linePos, advance))
 				visible_characters += 1
 				targetChar -= advance
 				linePos += advance
