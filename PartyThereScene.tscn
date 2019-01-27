@@ -59,6 +59,7 @@ func _on_Area2D_body_entered(body):
 			aux_node.reset_config()
 			aux_node.reset_text(true)
 			yield(get_tree().create_timer(3.5), \"timeout\")
+			AudioManager.changeSong(next_song)
 			get_tree().change_scene(next_scene)
 		else:
 			if aux_node_active:

@@ -54,6 +54,7 @@ func _on_Area2D_body_entered(body):
 			aux_node.reset_config()
 			aux_node.reset_text(true)
 			yield(get_tree().create_timer(5), \"timeout\")
+			AudioManager.changeSong(next_song)
 			get_tree().change_scene(\"res://PartyThereScene.tscn\")
 		else:
 			if aux_node.done:

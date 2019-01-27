@@ -14,7 +14,7 @@
 [ext_resource path="res://assets/sprites/estante.png" type="Texture" id=12]
 [ext_resource path="res://assets/sprites/characters/woman1.png" type="Texture" id=13]
 
-[sub_resource type="GDScript" id=15]
+[sub_resource type="GDScript" id=1]
 
 script/source = "extends Container
 
@@ -50,6 +50,7 @@ func _on_Area2D_body_entered(body):
 			aux_node.reset_config()
 			aux_node.reset_text(true)
 			yield(get_tree().create_timer(3.5), \"timeout\")
+			AudioManager.changeSong(next_song)
 			get_tree().change_scene(next_scene)
 		else:
 			if aux_node.done:
@@ -63,26 +64,26 @@ func _on_real_trigger(body):
 			node.done = true
 "
 
-[sub_resource type="RectangleShape2D" id=16]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 32.25 )
 
-[sub_resource type="RectangleShape2D" id=17]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 13.7623, 10 )
 
-[sub_resource type="RectangleShape2D" id=18]
+[sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 7.42726, 3.47251 )
 
-[sub_resource type="Theme" id=19]
+[sub_resource type="Theme" id=5]
 
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="DynamicFont" id=20]
+[sub_resource type="DynamicFont" id=6]
 
 size = 65
 use_mipmaps = false
@@ -91,32 +92,32 @@ extra_spacing_char = 5
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[sub_resource type="RectangleShape2D" id=21]
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 28.727, 25.8046 )
 
-[sub_resource type="RectangleShape2D" id=22]
+[sub_resource type="RectangleShape2D" id=8]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 12.8404 )
 
-[sub_resource type="RectangleShape2D" id=23]
+[sub_resource type="RectangleShape2D" id=9]
 
 custom_solver_bias = 0.0
 extents = Vector2( 6.60736, 83.5873 )
 
-[sub_resource type="RectangleShape2D" id=24]
+[sub_resource type="RectangleShape2D" id=10]
 
 custom_solver_bias = 0.0
 extents = Vector2( 18.2939, 77.8564 )
 
-[sub_resource type="RectangleShape2D" id=25]
+[sub_resource type="RectangleShape2D" id=11]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 22.2578 )
 
-[sub_resource type="RectangleShape2D" id=26]
+[sub_resource type="RectangleShape2D" id=12]
 
 custom_solver_bias = 0.0
 extents = Vector2( 38.7031, 5.55911 )
@@ -145,7 +146,7 @@ tracks/0/keys = {
 "values": [ Vector2( 774.321, 209.142 ), Vector2( 774.164, 209.142 ), Vector2( 794.321, 209.142 ), Vector2( 774.484, 209.142 ), Vector2( 774.321, 209.142 ) ]
 }
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=15]
 
 length = 11.0
 loop = true
@@ -163,12 +164,12 @@ tracks/0/keys = {
 "values": [ Vector2( 67.015, 168.807 ), Vector2( 67.015, 168.807 ), Vector2( 105.878, 168.807 ), Vector2( 67.015, 168.807 ), Vector2( 67.015, 168.807 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=28]
+[sub_resource type="RectangleShape2D" id=16]
 
 custom_solver_bias = 0.0
 extents = Vector2( 180, 44.2918 )
 
-[node name="root" type="Container"]
+[node name="root" type="Container" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -180,7 +181,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = SubResource( 15 )
+script = SubResource( 1 )
 next_song = 1
 next_scene = "res://HomeThereScene.tscn"
 poem_container_path = "textbox/Container/Background/poem"
@@ -229,7 +230,7 @@ __meta__ = {
 
 position = Vector2( -5.5, 0 )
 scale = Vector2( 1.42308, 1 )
-shape = SubResource( 16 )
+shape = SubResource( 2 )
 
 [node name="Left Wall2" type="StaticBody2D" parent="Walls" index="1"]
 
@@ -254,7 +255,7 @@ __meta__ = {
 
 position = Vector2( -5.5, 0 )
 scale = Vector2( 1.42308, 1 )
-shape = SubResource( 16 )
+shape = SubResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Walls" index="2"]
 
@@ -274,7 +275,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D" index="0"]
 
-shape = SubResource( 17 )
+shape = SubResource( 3 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Walls" index="3"]
 
@@ -295,7 +296,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2" index="0"]
 
 position = Vector2( 0.0503979, -48.5917 )
-shape = SubResource( 17 )
+shape = SubResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -321,7 +322,7 @@ speed = 160
 
 position = Vector2( 917.089, -91.8886 )
 scale = Vector2( 2.54064, 3.91626 )
-shape = SubResource( 18 )
+shape = SubResource( 4 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -373,7 +374,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = SubResource( 19 )
+theme = SubResource( 5 )
 _sections_unfolded = [ "Anchor", "Focus", "Material", "Mouse", "Rect", "Size Flags", "Theme" ]
 __meta__ = {
 "_edit_group_": true,
@@ -437,7 +438,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/normal_font = SubResource( 20 )
+custom_fonts/normal_font = SubResource( 6 )
 bbcode_enabled = true
 bbcode_text = "awefwaefwafawefwef"
 visible_characters = -1
@@ -487,7 +488,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = SubResource( 19 )
+theme = SubResource( 5 )
 _sections_unfolded = [ "Anchor", "Focus", "Material", "Mouse", "Rect", "Size Flags", "Theme" ]
 __meta__ = {
 "_edit_group_": true,
@@ -551,7 +552,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/normal_font = SubResource( 20 )
+custom_fonts/normal_font = SubResource( 6 )
 bbcode_enabled = true
 bbcode_text = "awefwaefwafawefwef"
 visible_characters = -1
@@ -614,7 +615,7 @@ bounce = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg/table_static" index="0"]
 
 position = Vector2( 209.107, 212.516 )
-shape = SubResource( 21 )
+shape = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="bg/table_static" index="1"]
 
@@ -661,7 +662,7 @@ texture = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container/chair_static" index="1"]
 
-shape = SubResource( 22 )
+shape = SubResource( 8 )
 
 [node name="chair_static2" type="StaticBody2D" parent="bg/Container" index="1"]
 
@@ -685,7 +686,7 @@ texture = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container/chair_static2" index="1"]
 
-shape = SubResource( 22 )
+shape = SubResource( 8 )
 
 [node name="Container2" type="Container" parent="bg" index="2"]
 
@@ -730,7 +731,7 @@ _sections_unfolded = [ "Offset", "Region" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container2/chair_static" index="1"]
 
-shape = SubResource( 22 )
+shape = SubResource( 8 )
 
 [node name="chair_static2" type="StaticBody2D" parent="bg/Container2" index="1"]
 
@@ -755,7 +756,7 @@ _sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container2/chair_static2" index="1"]
 
-shape = SubResource( 22 )
+shape = SubResource( 8 )
 
 [node name="Container3" type="Container" parent="bg" index="3"]
 
@@ -797,7 +798,7 @@ texture = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container3/chair_static3" index="1"]
 
-shape = SubResource( 22 )
+shape = SubResource( 8 )
 
 [node name="chair_static4" type="StaticBody2D" parent="bg/Container3" index="1"]
 
@@ -821,7 +822,7 @@ texture = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container3/chair_static4" index="1"]
 
-shape = SubResource( 22 )
+shape = SubResource( 8 )
 
 [node name="door" type="StaticBody2D" parent="bg" index="4"]
 
@@ -845,7 +846,7 @@ texture = ExtResource( 10 )
 
 position = Vector2( 19.8094, -22.0002 )
 scale = Vector2( 1.36215, 1 )
-shape = SubResource( 23 )
+shape = SubResource( 9 )
 
 [node name="Area2D" type="Area2D" parent="bg/door" index="2"]
 
@@ -862,7 +863,7 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg/door/Area2D" index="0"]
 
 position = Vector2( -2.21619, 0 )
-shape = SubResource( 24 )
+shape = SubResource( 10 )
 
 [node name="Container4" type="Container" parent="bg" index="5"]
 
@@ -910,7 +911,7 @@ texture = ExtResource( 11 )
 
 position = Vector2( -5.13815, -195.71 )
 scale = Vector2( 2.3128, 1.7754 )
-shape = SubResource( 25 )
+shape = SubResource( 11 )
 
 [node name="plant2" type="StaticBody2D" parent="bg/Container4" index="1"]
 
@@ -936,7 +937,7 @@ texture = ExtResource( 11 )
 
 position = Vector2( -5.13815, -195.71 )
 scale = Vector2( 2.3128, 1.7754 )
-shape = SubResource( 25 )
+shape = SubResource( 11 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="bg/Container4" index="2"]
 
@@ -963,7 +964,7 @@ texture = ExtResource( 12 )
 
 position = Vector2( 130.596, -224.507 )
 scale = Vector2( 2.37828, 12.4017 )
-shape = SubResource( 26 )
+shape = SubResource( 12 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="bg/Container4" index="3"]
 
@@ -990,7 +991,7 @@ texture = ExtResource( 12 )
 
 position = Vector2( 130.596, -224.507 )
 scale = Vector2( 2.37828, 12.4017 )
-shape = SubResource( 26 )
+shape = SubResource( 12 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="bg/Container4" index="4"]
 
@@ -1017,7 +1018,7 @@ texture = ExtResource( 12 )
 
 position = Vector2( 130.596, -224.507 )
 scale = Vector2( 2.37828, 12.4017 )
-shape = SubResource( 26 )
+shape = SubResource( 12 )
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="bg/Container4" index="5"]
 
@@ -1044,7 +1045,7 @@ texture = ExtResource( 12 )
 
 position = Vector2( 130.596, -224.507 )
 scale = Vector2( 2.37828, 12.4017 )
-shape = SubResource( 26 )
+shape = SubResource( 12 )
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="bg/Container4" index="6"]
 
@@ -1071,7 +1072,7 @@ texture = ExtResource( 12 )
 
 position = Vector2( 130.596, -224.507 )
 scale = Vector2( 2.37828, 12.4017 )
-shape = SubResource( 26 )
+shape = SubResource( 12 )
 
 [node name="person" type="StaticBody2D" parent="bg" index="6"]
 
@@ -1148,7 +1149,7 @@ autoplay = "loopsito"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/loopsito = SubResource( 27 )
+anims/loopsito = SubResource( 15 )
 blend_times = [  ]
 
 [node name="Area2D" type="Area2D" parent="bg" index="8"]
@@ -1167,7 +1168,7 @@ audio_bus_name = "Master"
 
 position = Vector2( 120, 70 )
 scale = Vector2( 1, 2.7093 )
-shape = SubResource( 28 )
+shape = SubResource( 16 )
 
 [connection signal="body_entered" from="bg/door/Area2D" to="." method="_on_Area2D_body_entered"]
 
