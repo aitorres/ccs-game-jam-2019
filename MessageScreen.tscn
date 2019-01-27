@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://IntroScreen.gd" type="Script" id=1]
+[ext_resource path="res://MessageScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFontData" id=1]
@@ -64,9 +64,9 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Visibility" ]
-change_song = true
-next_song = 0
-next_scene = "res://MountainHereScene.tscn"
+change_song = false
+next_song = 1
+next_scene = "res://WorkHereScene.tscn"
 
 [node name="Text" type="Label" parent="." index="0"]
 
@@ -81,7 +81,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 2 )
-text = "BETWEEN HOMES"
+text = "H O M E"
 align = 1
 valign = 1
 percent_visible = 0.0

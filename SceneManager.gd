@@ -18,6 +18,26 @@ func _ready():
 	fade_node = scene.instance()
 	add_child(fade_node)
 
+func _on_try_to_leave2(body):
+	if not (body is StaticBody2D):
+		if get_node(poem_container_path).done:
+			if use_final_text && !final_text:
+				get_node(poem_container_path).longText = longText
+				get_node(poem_container_path).reset_config()
+				get_node(poem_container_path).reset_text(true)
+				final_text = true
+				print("Final Texting")
+			else:
+				fadeOut2()
+
+func fadeOut2():
+	print("Fading Out")
+	fade_node.get_node("AnimationPlayer").play("FadeOut")
+	if change_song:
+		AudioManager.changeSong(next_song)
+	yield(get_tree().create_timer(fade_out_time), "timeout")
+	get_tree().change_scene("res://AbsolutionRight.tscn")
+
 func _on_try_to_leave(body):
 	if not (body is StaticBody2D):
 		if get_node(poem_container_path).done:

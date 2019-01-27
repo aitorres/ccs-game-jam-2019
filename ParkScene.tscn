@@ -25,7 +25,7 @@ script/source = "extends Container
 # var b = \"textvar\"
 
 export var next_song = 1
-export var next_scene = \"res://FamilyHereScene.tscn\"
+export var next_scene = \"res://BeachThereScene.tscn\"
 export var poem_container_path = \"textbox/Container/Background/poem\"
 
 var node
@@ -198,7 +198,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 script = SubResource( 1 )
 next_song = 4
-next_scene = "res://FamilyHereScene.tscn"
+next_scene = "res://BeachThereScene.tscn"
 poem_container_path = "textbox/Container/Background/poem"
 
 [node name="Walls" type="Container" parent="." index="0"]

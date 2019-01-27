@@ -33,17 +33,14 @@ export var poem_container_path = \"textbox/Container/Background/poem\"
 
 var node
 var aux_node
-var mirror_node
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	node = get_node(poem_container_path)
 	aux_node = get_node(\"aux_textbox/Container/Background/poem\")
-	mirror_node = get_node(\"mirror_textbox/Container/Background/poem\")
 	node.done = false
 	aux_node.done = true
-	mirror_node.done = true
 	pass
 
 func _process(delta):
@@ -54,11 +51,12 @@ func _process(delta):
 func _on_Area2D_body_entered(body):
 	if not (body is StaticBody2D):
 		if node.done:
-			aux_node.longText = \"maybe i just need to distract myself.\"
+			aux_node.longText = \"well, i can try going out for the sake of it\"
 			aux_node.reset_config()
 			aux_node.reset_text(true)
-			yield(get_tree().create_timer(3.5), \"timeout\")
-			get_tree().change_scene(next_scene)
+			yield(get_tree().create_timer(5), \"timeout\")
+			AudioManager.changeSong(next_song)
+			get_tree().change_scene(\"res://PartyThereScene.tscn\")
 		else:
 			if aux_node.done:
 				aux_node.reset_config()
@@ -66,7 +64,7 @@ func _on_Area2D_body_entered(body):
 
 func _on_real_trigger(body):
 	if not (body is StaticBody2D):
-		if not node.done and aux_node.done and mirror_node.done:
+		if not node.done and aux_node.done:
 			node.reset_text(true)
 			node.done = true
 		elif node.done:
@@ -75,22 +73,15 @@ func _on_real_trigger(body):
 			node.reset_text(true)
 			node.done = true
 
-func _on_mirror_collide(body):
-	if not (body is StaticBody2D):
-		if node.done:
-			mirror_node.longText = \"...but for a second i glimpse a smile on my face\"
-			mirror_node.reset_config()
-			mirror_node.reset_text(true)
-		else:
-			if mirror_node.done:
-				mirror_node.reset_config()
-				mirror_node.reset_text(true)
-
-
 
 func foto(body):
 	if not (body is StaticBody2D):
-		get_node(poem_container_path).reset_text(true)
+		if not node.done:
+			get_node(poem_container_path).reset_text(true)
+		else:
+			node.longText = \"i miss my family...\"
+			node.reset_config()
+			node.reset_text(true)
 "
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -144,12 +135,12 @@ extents = Vector2( 38.7031, 5.55911 )
 [sub_resource type="RectangleShape2D" id=11]
 
 custom_solver_bias = 0.0
-extents = Vector2( 180, 44.2918 )
+extents = Vector2( 10, 189 )
 
 [sub_resource type="RectangleShape2D" id=12]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 189 )
+extents = Vector2( 10, 10 )
 
 [sub_resource type="RectangleShape2D" id=13]
 
@@ -374,7 +365,6 @@ __meta__ = {
 
 [node name="textbox" type="Container" parent="." index="3"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -398,7 +388,6 @@ __meta__ = {
 
 [node name="Container" type="Container" parent="textbox" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -471,17 +460,16 @@ _sections_unfolded = [ "BBCode", "Size Flags", "Theme", "Visibility", "custom_co
 lineWaitTime = 0.7
 charWaitTime = 0.1
 vibrateWaitTime = 0.001
-longText = "up on the distance, i can see\\nthe sun slowly tucking away
-\\\\cbehind the snow capped mountains
-\\\\cdawn will soon fall upon so many\\ncareless people
-\\\\call unaware of the luck they have
-\\\\cknowing that they will open\\nthe door and find
-\\\\ctheir most beloved arms\\npatiently waiting for their return[time=5]
-\\\\ci miss waiting and i miss being waited
-\\\\cand i would trade all this\\nself proclaimed perfection
-\\\\call the order and the greatness of this place
-\\\\cto go back\\neven if just for a day
-\\\\cand find myself\\once again"
+longText = "this frame\\nthis picture
+\\\\cit takes me back to my childhood
+\\\\cmom and dad are there
+\\\\cand oh\\nlook at the happy me
+\\\\ci was not yet aware of all that is wrong in this world
+\\\\call the pain and suffering\\nand the loneliness
+\\\\ci only cared about my parents and school
+\\\\cand having my stuffed rabbit by my side
+\\\\cand i never thought that one day
+\\\\ci would lose it all"
 start = false
 startOnFirstLine = false
 vibrate = false
@@ -490,7 +478,6 @@ vibrateMax = 20
 
 [node name="aux_textbox" type="Container" parent="." index="4"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -514,7 +501,6 @@ __meta__ = {
 
 [node name="Container" type="Container" parent="aux_textbox" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -587,11 +573,13 @@ _sections_unfolded = [ "BBCode", "Size Flags", "Theme", "Visibility", "custom_co
 lineWaitTime = 0.5
 charWaitTime = 0.05
 vibrateWaitTime = 0.001
-longText = "everything is okay
-\\\\cevery spoon\\neven the tiniest
-\\\\cis safe upon the cabinet
-\\\\cwhy would i abandon this safe haven, i wonder
-\\\\cand yet, i do not find myself\\nbelonging here"
+longText = "i have no reason to go outside
+\\\\cmy friends are all away
+\\\\cmy familiy is probably busy
+\\\\cand i have nothing else to do today
+\\\\ci suppose i will just stay here
+\\\\cwhile my time ticks away
+\\\\cat a place i do not belong anymore"
 start = false
 startOnFirstLine = false
 vibrate = false
@@ -728,7 +716,6 @@ stretch_mode = 0
 
 [node name="door" type="StaticBody2D" parent="bg" index="0"]
 
-editor/display_folded = true
 position = Vector2( 1, 479 )
 input_pickable = false
 collision_layer = 1
@@ -754,7 +741,6 @@ shape = SubResource( 7 )
 
 [node name="Area2D" type="Area2D" parent="bg/door" index="2"]
 
-editor/display_folded = true
 position = Vector2( 52, -444.681 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -845,25 +831,7 @@ position = Vector2( 130.596, -224.507 )
 scale = Vector2( 2.37828, 12.4017 )
 shape = SubResource( 10 )
 
-[node name="Area2D" type="Area2D" parent="bg" index="2"]
-
-editor/display_folded = true
-position = Vector2( 411, 219 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Area2D" index="0"]
-
-position = Vector2( 160, -195 )
-scale = Vector2( 0.226776, 1.5859 )
-shape = SubResource( 11 )
-
-[node name="bed" type="StaticBody2D" parent="bg" index="3"]
+[node name="bed" type="StaticBody2D" parent="bg" index="2"]
 
 editor/display_folded = true
 position = Vector2( -280.373, 243.659 )
@@ -888,9 +856,9 @@ texture = ExtResource( 10 )
 
 position = Vector2( 901, 99 )
 scale = Vector2( 6.92307, 0.526042 )
-shape = SubResource( 12 )
+shape = SubResource( 11 )
 
-[node name="desk" type="StaticBody2D" parent="bg" index="4"]
+[node name="desk" type="StaticBody2D" parent="bg" index="3"]
 
 editor/display_folded = true
 input_pickable = false
@@ -917,9 +885,9 @@ _sections_unfolded = [ "Z Index" ]
 
 position = Vector2( 1011, 452.5 )
 scale = Vector2( 5.38462, 8.96154 )
-shape = SubResource( 13 )
+shape = SubResource( 12 )
 
-[node name="Chair" type="StaticBody2D" parent="bg" index="5"]
+[node name="Chair" type="StaticBody2D" parent="bg" index="4"]
 
 editor/display_folded = true
 position = Vector2( 901, 469 )
@@ -943,9 +911,9 @@ _sections_unfolded = [ "Z Index" ]
 
 position = Vector2( 10, 10 )
 scale = Vector2( 3.07692, 3.46154 )
-shape = SubResource( 14 )
+shape = SubResource( 13 )
 
-[node name="windows vista" type="StaticBody2D" parent="bg" index="6"]
+[node name="windows vista" type="StaticBody2D" parent="bg" index="5"]
 
 editor/display_folded = true
 position = Vector2( 541, 29 )
@@ -969,7 +937,7 @@ position = Vector2( 30, -15 )
 scale = Vector2( 3.84616, 5.76923 )
 shape = SubResource( 15 )
 
-[node name="windows vista2" type="StaticBody2D" parent="bg" index="7"]
+[node name="windows vista2" type="StaticBody2D" parent="bg" index="6"]
 
 editor/display_folded = true
 position = Vector2( 541, 29 )
@@ -993,13 +961,13 @@ position = Vector2( -231.192, -16.3604 )
 scale = Vector2( 3.84616, 5.76923 )
 shape = SubResource( 15 )
 
-[node name="Alfombra" type="Sprite" parent="bg" index="8"]
+[node name="Alfombra" type="Sprite" parent="bg" index="7"]
 
 position = Vector2( 219.484, 297.254 )
 scale = Vector2( 2.47138, 1.92044 )
 texture = ExtResource( 14 )
 
-[node name="Mesa con foto" type="StaticBody2D" parent="bg" index="9"]
+[node name="Mesa con foto" type="StaticBody2D" parent="bg" index="8"]
 
 input_pickable = false
 collision_layer = 1
@@ -1050,7 +1018,7 @@ position = Vector2( 981.372, 271.281 )
 scale = Vector2( 3.79419, 2.68922 )
 shape = SubResource( 17 )
 
-[node name="mueble 1" type="StaticBody2D" parent="bg" index="10"]
+[node name="mueble 1" type="StaticBody2D" parent="bg" index="9"]
 
 editor/display_folded = true
 input_pickable = false
@@ -1075,7 +1043,7 @@ position = Vector2( 380.38, 298.802 )
 scale = Vector2( 4.0365, 0.615526 )
 shape = SubResource( 18 )
 
-[node name="mueble2" type="StaticBody2D" parent="bg" index="11"]
+[node name="mueble2" type="StaticBody2D" parent="bg" index="10"]
 
 editor/display_folded = true
 input_pickable = false
@@ -1117,8 +1085,6 @@ _sections_unfolded = [ "Z Index" ]
 poemPath = NodePath("../aux_textbox/Container/Background/poem")
 
 [connection signal="body_entered" from="bg/door/Area2D" to="." method="_on_Area2D_body_entered"]
-
-[connection signal="body_entered" from="bg/Area2D" to="." method="_on_real_trigger"]
 
 [connection signal="body_entered" from="bg/Mesa con foto/Area2D" to="." method="foto"]
 

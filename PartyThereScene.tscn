@@ -60,19 +60,19 @@ func _process(delta):
 		#
 		#print(\"Done\")
 	pass
-	
+
 func fadeOut():
 	print(\"Fading Out\")
 	fade_node.get_node(\"AnimationPlayer\").play(\"FadeOut\")
 	if change_song:
 		AudioManager.changeSong(next_song)
 	yield(get_tree().create_timer(fade_out_time), \"timeout\")
-	get_tree().change_scene(next_scene)
+	get_tree().change_scene(\"res://MountainHereScene.tscn\")
 
 func _on_Area2D_body_entered(body):
 	if not (body is StaticBody2D):
 		if node_active:
-			aux_node.longText = \"it is time\\nto go home.\"
+			aux_node.longText = \"i suppose i will leave early tonight\"
 			aux_node.reset_config()
 			aux_node.reset_text(true)
 			yield(get_tree().create_timer(3.5), \"timeout\")
@@ -545,16 +545,16 @@ _sections_unfolded = [ "BBCode", "Size Flags", "Theme", "Visibility", "custom_co
 lineWaitTime = 0.7
 charWaitTime = 0.1
 vibrateWaitTime = 0.001
-longText = "empty chairs and empty faces fill this place
-\\\\cwithout joy\\nwithout hope or sense
-\\\\cthese arched days i rarely\\nthink of survival
-\\\\cit is clear\\nin their void stares
-\\\\cdeny it, but i am alone
-\\\\ccolor is nothing\\nbut a deceiving mirror
-\\\\creflecting a perpetual lie
-\\\\c[vibrate=0.2,5]is this okay, i ask myself\\nit is not, i know
-\\\\cfor i am far away from home
-\\\\cand the clock is ticking away"
+longText = "i turn around and see only empty faces
+\\\\cof people i do not know
+\\\\csome time ago i used to like going out
+\\\\cto party with my friends and family
+\\\\cit felt good to find a break from everyday life
+\\\\cand just for a night feel different and happy
+\\\\cbut now\\nfar away
+\\\\ci just do not feel the same
+\\\\cand all i can think of is the sound of loud music
+\\\\churting my ears and hurting my heart"
 start = false
 startOnFirstLine = false
 vibrate = false
@@ -658,8 +658,9 @@ _sections_unfolded = [ "BBCode", "Size Flags", "Theme", "Visibility", "custom_co
 lineWaitTime = 0.5
 charWaitTime = 0.05
 vibrateWaitTime = 0.001
-longText = "the clock ticks\\nI fade away.
-\\\\cbut it's not yet time to leave."
+longText = "this is a party and i am not supposed to leave
+\\\\cbut does it even matter
+\\\\cif i feels like i do not belong?"
 start = false
 startOnFirstLine = false
 vibrate = false
@@ -690,7 +691,6 @@ __meta__ = {
 
 [node name="door" type="StaticBody2D" parent="bg" index="0"]
 
-editor/display_folded = true
 position = Vector2( 1032.19, 299.588 )
 input_pickable = false
 collision_layer = 1
@@ -714,7 +714,6 @@ shape = SubResource( 7 )
 
 [node name="Area2D" type="Area2D" parent="bg/door" index="2"]
 
-editor/display_folded = true
 position = Vector2( 22.1606, -23.2688 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
