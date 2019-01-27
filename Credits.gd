@@ -1,25 +1,18 @@
 extends Control
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
 var credits = [
-	"PROGRAMMING\nAndres Ignacio Torres\nChristian Oliveros",
+	"CONCEPTUAL ART LEAD\nAndres Ignacio Torres",
+	"PROGRAMMING LEAD\nChristian Oliveros",
 	"MUSIC LEAD\nDavid Rodriguez",
 	"DESIGN LEAD\nAntonella Requena",
+	"INSPIRED BY\nLOS DIAS ARQUEADOS\nWRITTEN BYLUIS EDUARDO BARRAZA",
 	"FROM USB VE\nWITH LOVE",
 	"Caracas Game Jam\n2019",
 	"January 25 to\nJanuary 27\n2019",
-	"THANKS\nFOR\nPLAYING"
+	"THANKS\nFOR\nPLAYING!"
 ]
 
 var counter = 0
-
-func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	pass
 
 func next_credit():
 	if (counter < credits.size()):
