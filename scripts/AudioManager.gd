@@ -8,6 +8,8 @@ var music = [
     preload("res://assets/music/alta-final.ogg"),
 ]
 
+var sfx_door = preload("res://assets/sfx/431117__inspectorj__door-front-opening-a.wav")
+
 var currSong = 0
 
 export(float, 0, 5, 0.00001) var fadeTime = 3
@@ -19,6 +21,8 @@ var currSampler = 0
 var prevSampler = 0
 var prevVol = 0.0
 
+var sfx_sampler = null
+
 var MIN_VOL = -80.0
 var MAX_VOL = 0
 
@@ -29,6 +33,11 @@ func _ready():
 
     for song in music:
         song.set_loop(true) 
+
+    sfx_sampler = AudioStreamPlayer.new()
+    add_child(sfx_sampler)
+    sfx_sampler.volume_db = MAX_VOL
+    sfx_sampler.stream = sfx_door
 
     var sampler1 = AudioStreamPlayer.new()
     add_child(sampler1)
@@ -105,6 +114,10 @@ func _process(delta):
             accTime = 0.0
 
 func changeSong(song):
+    var new_song = song % music.size()
+    if new_song == currSong:
+        print("Same Song")
+        return
     print("Prev Song: " + String(currSong) + " New Song:" + String(song))
     currSong = song % music.size()
     prevSampler = currSampler
@@ -119,3 +132,7 @@ func changeSong(song):
 
     accTime = 0.0
     init_crossfade = true
+
+
+func playDoorSound():
+    sfx_sampler.play()
