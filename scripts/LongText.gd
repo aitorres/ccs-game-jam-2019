@@ -12,6 +12,8 @@ export(bool) var vibrate = false
 export(bool) var done = false
 export(float, 0, 20, 0.01) var vibrateMax = 20
 
+var triggered = -1
+
 var arrText = []
 var currText = ""
 var curPos = 0
@@ -37,6 +39,8 @@ var textCenter =  Vector2(0,0)
 var background = null
 
 func reset_text(state):
+	print("Hola")
+	print(state)
 	start = state
 	done = false
 	if background == null:
@@ -54,7 +58,6 @@ func reset_text(state):
 
 func _ready():
 	reset_text(start)
-	
 
 func config_text():
 	rect_position = textCenter
@@ -67,7 +70,7 @@ func config_text():
 		textComplete = true
 		charComplete = true
 		return
-	
+
 	if startOnFirstLine:
 		currText = arrText[0]
 		curPos = 1
@@ -77,7 +80,7 @@ func config_text():
 		curPos = 0
 		linePos = 0
 		charComplete = true
-	
+
 	visible_characters = 0
 	parse_bbcode(currText)
 
@@ -95,7 +98,7 @@ func _process(delta):
 	if start:
 		animateText(delta)
 
-	
+
 func animateText(delta):
 	if !textComplete || (textComplete && !charComplete):
 		if charComplete:
@@ -149,9 +152,9 @@ func animateText(delta):
 					print("vibrate")
 
 				currLine += "\n"
-				
+
 				visible_characters = 0
-				currText += currLine 
+				currText += currLine
 				targetChar = currLine.length()
 				parse_bbcode(currText)
 				curPos += 1
@@ -195,12 +198,13 @@ func animateText(delta):
 			start = false
 			done = true
 			clear()
+			get_parent().hide()
 
 
 func charsToSkip():
 	if currLine[linePos] != "[":
 		return 1
-	
+
 	var regexRes = imgRegex.search(currLine, linePos)
 
 	if regexRes:
@@ -210,10 +214,13 @@ func charsToSkip():
 
 	if regexRes:
 		return regexRes.get_string().length()
-	
-	
 
 func vibrate():
 	var mov = (randf() * 2.0 - 1.0) * vibrateMax 
 
 	rect_position = textCenter + Vector2(0, mov)
+
+func _on_Area2D_body_entered(body):
+	triggered += 1
+	if triggered == 1:
+		reset_text(true)
