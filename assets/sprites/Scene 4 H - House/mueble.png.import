@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/clouds.png-af54c13c68df5dff21204eca32771f44.stex"
+path="res://.import/mueble.png-8a3ce94d35f3306bca3231e3a6fc6d45.stex"
 
 [deps]
 
-source_file="res://assets/sprites/Scene 6 H - Mountain/clouds.png"
-dest_files=[ "res://.import/clouds.png-af54c13c68df5dff21204eca32771f44.stex" ]
+source_file="res://assets/sprites/Scene 4 H - House/mueble.png"
+dest_files=[ "res://.import/mueble.png-8a3ce94d35f3306bca3231e3a6fc6d45.stex" ]
 
 [params]
 

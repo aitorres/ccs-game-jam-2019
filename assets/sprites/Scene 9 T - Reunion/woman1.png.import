@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/clouds.png-af54c13c68df5dff21204eca32771f44.stex"
+path="res://.import/woman1.png-93169b718c856bedd4f0c361190542d2.stex"
 
 [deps]
 
-source_file="res://assets/sprites/Scene 6 H - Mountain/clouds.png"
-dest_files=[ "res://.import/clouds.png-af54c13c68df5dff21204eca32771f44.stex" ]
+source_file="res://assets/sprites/Scene 9 T - Reunion/woman1.png"
+dest_files=[ "res://.import/woman1.png-93169b718c856bedd4f0c361190542d2.stex" ]
 
 [params]
 

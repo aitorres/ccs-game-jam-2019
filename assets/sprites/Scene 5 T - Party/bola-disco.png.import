@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/clouds.png-af54c13c68df5dff21204eca32771f44.stex"
+path="res://.import/bola-disco.png-91c76da9a8c4bd52c70ca1860de7253f.stex"
 
 [deps]
 
-source_file="res://assets/sprites/Scene 6 H - Mountain/clouds.png"
-dest_files=[ "res://.import/clouds.png-af54c13c68df5dff21204eca32771f44.stex" ]
+source_file="res://assets/sprites/Scene 5 T - Party/bola-disco.png"
+dest_files=[ "res://.import/bola-disco.png-91c76da9a8c4bd52c70ca1860de7253f.stex" ]
 
 [params]
 

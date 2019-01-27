@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/clouds.png-af54c13c68df5dff21204eca32771f44.stex"
+path="res://.import/mesa.png-54384dd43a798c26c2dc601afaa6c0ea.stex"
 
 [deps]
 
-source_file="res://assets/sprites/Scene 6 H - Mountain/clouds.png"
-dest_files=[ "res://.import/clouds.png-af54c13c68df5dff21204eca32771f44.stex" ]
+source_file="res://assets/sprites/mesa.png"
+dest_files=[ "res://.import/mesa.png-54384dd43a798c26c2dc601afaa6c0ea.stex" ]
 
 [params]
 

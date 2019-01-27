@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/clouds.png-af54c13c68df5dff21204eca32771f44.stex"
+path="res://.import/paredmorada.png-7a5f1c1e5452a4e10ff352de7bedd8d5.stex"
 
 [deps]
 
-source_file="res://assets/sprites/Scene 6 H - Mountain/clouds.png"
-dest_files=[ "res://.import/clouds.png-af54c13c68df5dff21204eca32771f44.stex" ]
+source_file="res://assets/sprites/Scene 3 H - Bus/paredmorada.png"
+dest_files=[ "res://.import/paredmorada.png-7a5f1c1e5452a4e10ff352de7bedd8d5.stex" ]
 
 [params]
 

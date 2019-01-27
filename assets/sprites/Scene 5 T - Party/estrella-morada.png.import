@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/clouds.png-af54c13c68df5dff21204eca32771f44.stex"
+path="res://.import/estrella-morada.png-fb52fbdbf4e6203f20b20e4ab59516f4.stex"
 
 [deps]
 
-source_file="res://assets/sprites/Scene 6 H - Mountain/clouds.png"
-dest_files=[ "res://.import/clouds.png-af54c13c68df5dff21204eca32771f44.stex" ]
+source_file="res://assets/sprites/Scene 5 T - Party/estrella-morada.png"
+dest_files=[ "res://.import/estrella-morada.png-fb52fbdbf4e6203f20b20e4ab59516f4.stex" ]
 
 [params]
 
