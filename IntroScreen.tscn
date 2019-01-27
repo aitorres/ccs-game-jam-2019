@@ -66,7 +66,7 @@ font_data = ExtResource( 2 )
 fallback/0 = SubResource( 4 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Font/fallback", "Resource", "Settings" ]
 
-[node name="Credits" type="Control" index="0"]
+[node name="Credits" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -148,11 +148,12 @@ _sections_unfolded = [ "Anchor", "BBCode", "Rect", "Size Flags", "custom_fonts",
 lineWaitTime = 0.5
 charWaitTime = 0.1
 longText = "Hola [color=red]Adios[/color]
-Probando \\\\nLineas [img]res://icon.png[/img]
-\\\\t[color=aqua]Tabs[/color]
+\\\\cProbando \\\\nLineas [img]res://icon.png[/img]
+\\\\c\\\\t[color=aqua]Tabs[/color]
 \\\\cVacio"
-start = true
+start = false
 startOnFirstLine = false
+done = false
 
 [node name="Background" type="Sprite" parent="Text2" index="1"]
 
