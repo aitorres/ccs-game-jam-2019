@@ -64,6 +64,9 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Visibility" ]
+change_song = true
+next_song = 4
+next_scene = "res://MountainHereScene.tscn"
 
 [node name="Text" type="Label" parent="." index="0"]
 
@@ -97,7 +100,7 @@ anims/fade = SubResource( 3 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="2"]
 
 stream = null
 volume_db = 0.0
@@ -106,3 +109,5 @@ autoplay = false
 mix_target = 0
 bus = "Master"
 _sections_unfolded = [ "Pause" ]
+
+

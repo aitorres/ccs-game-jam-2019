@@ -4,6 +4,10 @@ extends Control
 # var a = 2
 # var b = "textvar"
 
+export(bool) var change_song = false
+export var next_song = 1
+export var next_scene = "res://MountainHereScene.tscn"
+
 var credits = [
 	"\"ONE IS BUT A THING",
 	"AT THIS TIMELY\nVAGUENESS OF THE DAY,",
@@ -30,4 +34,6 @@ func next_credit():
 		get_node("Text").set_text(credits[counter])
 		counter += 1
 	else:
-		get_tree().change_scene("res://MountainHereScene.tscn")
+		if change_song:
+			AudioManager.changeSong(next_song)
+		get_tree().change_scene(next_scene)
