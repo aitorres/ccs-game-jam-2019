@@ -1,18 +1,19 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://WASDmovement.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/characters/here_man.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/characters/there_man.png" type="Texture" id=2]
 [ext_resource path="res://assets/montain background.png" type="Texture" id=3]
 [ext_resource path="res://assets/fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=4]
 [ext_resource path="res://scripts/LongText.gd" type="Script" id=5]
-[ext_resource path="res://assets/bgs/work.png" type="Texture" id=6]
-[ext_resource path="res://assets/sprites/Scene 1 H - Work/mesa.png" type="Texture" id=7]
-[ext_resource path="res://assets/sprites/Scene 1 H - Work/silla-lado.png" type="Texture" id=8]
-[ext_resource path="res://assets/sprites/Scene 1 H - Work/silla-espalda.png" type="Texture" id=9]
-[ext_resource path="res://assets/sprites/Scene 1 H - Work/puerta.png" type="Texture" id=10]
-[ext_resource path="res://assets/sprites/Scene 1 H - Work/planta.png" type="Texture" id=11]
-[ext_resource path="res://assets/sprites/estante.png" type="Texture" id=12]
-[ext_resource path="res://assets/sprites/characters/woman1.png" type="Texture" id=13]
+[ext_resource path="res://assets/bgs/home-there.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/Scene 2 T - House/puerta.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/Scene 1 H - Work/planta.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/estante.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/Scene 2 T - House/cama.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/Scene 2 T - House/escritorio.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/Scene 1 H - Work/silla-lado.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/Scene 2 T - House/espejo.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/Scene 2 T - House/ventana.png" type="Texture" id=14]
 
 [sub_resource type="GDScript" id=1]
 
@@ -23,19 +24,22 @@ script/source = "extends Container
 # var b = \"textvar\"
 
 export var next_song = 1
-export var next_scene = \"res://HomeThereScene.tscn\"
+export var next_scene = \"res://Credits.tscn\"
 export var poem_container_path = \"textbox/Container/Background/poem\"
 
 var node
 var aux_node
+var mirror_node
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	node = get_node(poem_container_path)
 	aux_node = get_node(\"aux_textbox/Container/Background/poem\")
+	mirror_node = get_node(\"mirror_textbox/Container/Background/poem\")
 	node.done = false
 	aux_node.done = true
+	mirror_node.done = true
 	pass
 
 func _process(delta):
@@ -46,7 +50,7 @@ func _process(delta):
 func _on_Area2D_body_entered(body):
 	if not (body is StaticBody2D):
 		if node.done:
-			aux_node.longText = \"it is time\\nto go home.\"
+			aux_node.longText = \"maybe i just need to distract myself.\"
 			aux_node.reset_config()
 			aux_node.reset_text(true)
 			yield(get_tree().create_timer(3.5), \"timeout\")
@@ -58,9 +62,25 @@ func _on_Area2D_body_entered(body):
 
 func _on_real_trigger(body):
 	if not (body is StaticBody2D):
-		if not node.done and aux_node.done:
+		if not node.done and aux_node.done and mirror_node.done:
 			node.reset_text(true)
 			node.done = true
+		elif node.done:
+			node.longText = \"i miss my childhood sunsets\"
+			node.reset_config()
+			node.reset_text(true)
+			node.done = true
+
+func _on_mirror_collide(body):
+	if not (body is StaticBody2D):
+		if node.done:
+			mirror_node.longText = \"...but for a second i glimpse a smile on my face\"
+			mirror_node.reset_config()
+			mirror_node.reset_text(true)
+		else:
+			if mirror_node.done:
+				mirror_node.reset_config()
+				mirror_node.reset_text(true)
 "
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -91,25 +111,15 @@ extra_spacing_char = 5
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[sub_resource type="RectangleShape2D" id=7]
-
-custom_solver_bias = 0.0
-extents = Vector2( 28.727, 25.8046 )
-
-[sub_resource type="RectangleShape2D" id=8]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10, 12.8404 )
-
 [sub_resource type="RectangleShape2D" id=9]
 
 custom_solver_bias = 0.0
-extents = Vector2( 6.60736, 83.5873 )
+extents = Vector2( 29.6232, 83.5873 )
 
 [sub_resource type="RectangleShape2D" id=10]
 
 custom_solver_bias = 0.0
-extents = Vector2( 18.2939, 77.8564 )
+extents = Vector2( 40.2162, 77.8564 )
 
 [sub_resource type="RectangleShape2D" id=11]
 
@@ -121,53 +131,40 @@ extents = Vector2( 10, 22.2578 )
 custom_solver_bias = 0.0
 extents = Vector2( 38.7031, 5.55911 )
 
-[sub_resource type="RectangleShape2D" id=13]
-
-custom_solver_bias = 0.0
-extents = Vector2( 17.9431, 11.1759 )
-
-[sub_resource type="Animation" id=14]
-
-resource_name = "person"
-length = 8.0
-loop = true
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 2, 4, 6, 8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 774.321, 209.142 ), Vector2( 774.164, 209.142 ), Vector2( 794.321, 209.142 ), Vector2( 774.484, 209.142 ), Vector2( 774.321, 209.142 ) ]
-}
-
-[sub_resource type="Animation" id=15]
-
-resource_name = "loopsito"
-length = 11.0
-loop = true
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 2.6, 5.6, 8.3, 11 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 67.015, 168.807 ), Vector2( 67.015, 168.807 ), Vector2( 105.878, 168.807 ), Vector2( 67.015, 168.807 ), Vector2( 67.015, 168.807 ) ]
-}
-
 [sub_resource type="RectangleShape2D" id=16]
 
 custom_solver_bias = 0.0
 extents = Vector2( 180, 44.2918 )
+
+[sub_resource type="RectangleShape2D" id=17]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 189 )
+
+[sub_resource type="RectangleShape2D" id=18]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=19]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=20]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=22]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=21]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
 
 [node name="root" type="Container" index="0"]
 
@@ -183,7 +180,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 script = SubResource( 1 )
 next_song = 1
-next_scene = "res://HomeThereScene.tscn"
+next_scene = "res://Credits.tscn"
 poem_container_path = "textbox/Container/Background/poem"
 
 [node name="Walls" type="Container" parent="." index="0"]
@@ -280,7 +277,7 @@ shape = SubResource( 3 )
 [node name="StaticBody2D2" type="StaticBody2D" parent="Walls" index="3"]
 
 editor/display_folded = true
-position = Vector2( 576.208, 507.51 )
+position = Vector2( 576.208, 458.51 )
 scale = Vector2( 50.2919, 18.9505 )
 input_pickable = false
 collision_layer = 1
@@ -304,7 +301,7 @@ __meta__ = {
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." index="1"]
 
 editor/display_folded = true
-position = Vector2( -661.567, 602.298 )
+position = Vector2( 190, 610 )
 z_index = 10
 input_pickable = false
 collision_layer = 1
@@ -316,11 +313,11 @@ __meta__ = {
 "_edit_group_": true
 }
 can_move = true
-speed = 160
+speed = 180
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="0"]
 
-position = Vector2( 917.089, -91.8886 )
+position = Vector2( 700, -180 )
 scale = Vector2( 2.54064, 3.91626 )
 shape = SubResource( 4 )
 __meta__ = {
@@ -332,6 +329,8 @@ __meta__ = {
 position = Vector2( -1.13205, -16.066 )
 scale = Vector2( 0.366068, 0.22259 )
 texture = ExtResource( 2 )
+flip_h = true
+_sections_unfolded = [ "Offset", "Region" ]
 
 [node name="TextureRect" type="TextureRect" parent="." index="2"]
 
@@ -360,6 +359,7 @@ __meta__ = {
 
 [node name="textbox" type="Container" parent="." index="3"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -455,16 +455,17 @@ _sections_unfolded = [ "BBCode", "Size Flags", "Theme", "Visibility", "custom_co
 lineWaitTime = 0.7
 charWaitTime = 0.1
 vibrateWaitTime = 0.001
-longText = "empty chairs and empty faces fill this place
-\\\\cwithout joy\\nwithout hope or sense
-\\\\cthese arched days i rarely\\nthink of survival
-\\\\cit is clear\\nin their void stares
-\\\\cdeny it, but i am alone
-\\\\ccolor is nothing\\nbut a deceiving mirror
-\\\\creflecting a perpetual lie
-\\\\c[vibrate=0.2,5]is this okay, i ask myself\\nit is not, i know
-\\\\cfor i am far away from home
-\\\\cand the clock is ticking away"
+longText = "up on the distance, i can see\\nthe sun slowly tucking away
+\\\\cbehind the snow capped mountains
+\\\\cdawn will soon fall upon so many\\ncareless people
+\\\\call unaware of the luck they have
+\\\\cknowing that they will open\\nthe door and find
+\\\\ctheir most beloved arms\\npatiently waiting for their return[time=5]
+\\\\ci miss waiting and i miss being waited
+\\\\cand i would trade all this\\nself proclaimed perfection
+\\\\call the order and the greatness of this place
+\\\\cto go back\\neven if just for a day
+\\\\cand find myself\\once again"
 start = false
 startOnFirstLine = false
 vibrate = false
@@ -497,6 +498,7 @@ __meta__ = {
 
 [node name="Container" type="Container" parent="aux_textbox" index="0"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -569,15 +571,127 @@ _sections_unfolded = [ "BBCode", "Size Flags", "Theme", "Visibility", "custom_co
 lineWaitTime = 0.5
 charWaitTime = 0.05
 vibrateWaitTime = 0.001
-longText = "the clock ticks\\nI fade away.
-\\\\cbut it's not yet time to leave."
+longText = "everything is okay
+\\\\cevery spoon\\neven the tiniest
+\\\\cis safe upon the cabinet
+\\\\cwhy would i abandon this safe haven, i wonder
+\\\\cand yet, i do not find myself\\nbelonging here"
 start = false
 startOnFirstLine = false
 vibrate = false
 done = true
 vibrateMax = 20
 
-[node name="bg" type="TextureRect" parent="." index="5"]
+[node name="mirror_textbox" type="Container" parent="." index="5"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 111.0
+margin_top = 584.0
+margin_right = 1169.0
+margin_bottom = 722.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = SubResource( 5 )
+_sections_unfolded = [ "Anchor", "Focus", "Material", "Mouse", "Rect", "Size Flags", "Theme" ]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Container" type="Container" parent="mirror_textbox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 9.0
+margin_top = 7.0
+margin_right = 1048.0
+margin_bottom = 127.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Background" type="Panel" parent="mirror_textbox/Container" index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -519.5
+margin_top = -60.0
+margin_right = 519.5
+margin_bottom = 60.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Grow Direction", "Material", "Rect", "Size Flags", "Theme", "Visibility", "custom_styles" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="poem" type="RichTextLabel" parent="mirror_textbox/Container/Background" index="0"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.5
+margin_top = -60.0
+margin_right = 512.5
+margin_bottom = 60.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/normal_font = SubResource( 6 )
+bbcode_enabled = true
+bbcode_text = "awefwaefwafawefwef"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "awefwaefwafawefwef"
+scroll_active = false
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 5 )
+_sections_unfolded = [ "BBCode", "Size Flags", "Theme", "Visibility", "custom_constants", "custom_fonts" ]
+lineWaitTime = 1.0
+charWaitTime = 0.09
+vibrateWaitTime = 0.001
+longText = "looking upon the mirror\\ni barely recognize a shade
+\\\\cof my former self
+\\\\cmaybe i left an irreplaceable part of me
+\\\\cwith my toys and teacups\\nand the other half of my heart
+\\\\c...and i can not go back"
+start = false
+startOnFirstLine = false
+vibrate = false
+done = true
+vibrateMax = 20
+
+[node name="bg" type="TextureRect" parent="." index="6"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -585,9 +699,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 109.0
-margin_top = 41.0
+margin_top = 45.0
 margin_right = 1172.0
-margin_bottom = 583.0
+margin_bottom = 587.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1
@@ -596,239 +710,10 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 texture = ExtResource( 6 )
 stretch_mode = 0
-__meta__ = {
-"_edit_lock_": true
-}
 
-[node name="table_static" type="StaticBody2D" parent="bg" index="0"]
+[node name="door" type="StaticBody2D" parent="bg" index="0"]
 
-editor/display_folded = true
-position = Vector2( -76.2386, -472.311 )
-scale = Vector2( 2.88773, 3.48419 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/table_static" index="0"]
-
-position = Vector2( 209.107, 212.516 )
-shape = SubResource( 7 )
-
-[node name="Sprite" type="Sprite" parent="bg/table_static" index="1"]
-
-position = Vector2( 209.121, 216.523 )
-texture = ExtResource( 7 )
-
-[node name="Container" type="Container" parent="bg" index="1"]
-
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 399.538
-margin_top = 225.418
-margin_right = 439.538
-margin_bottom = 265.418
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-
-[node name="chair_static" type="StaticBody2D" parent="bg/Container" index="0"]
-
-editor/display_folded = true
-position = Vector2( 0.537567, 0.417664 )
-scale = Vector2( 2.99181, 2.99181 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="bg/Container/chair_static" index="0"]
-
-texture = ExtResource( 8 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container/chair_static" index="1"]
-
-shape = SubResource( 8 )
-
-[node name="chair_static2" type="StaticBody2D" parent="bg/Container" index="1"]
-
-editor/display_folded = true
-position = Vector2( 2.20786, 88.3957 )
-scale = Vector2( 2.99181, 2.99181 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="bg/Container/chair_static2" index="0"]
-
-texture = ExtResource( 8 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container/chair_static2" index="1"]
-
-shape = SubResource( 8 )
-
-[node name="Container2" type="Container" parent="bg" index="2"]
-
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 659.0
-margin_top = 223.0
-margin_right = 699.0
-margin_bottom = 263.0
-rect_rotation = -0.546766
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-_sections_unfolded = [ "Material", "Visibility" ]
-
-[node name="chair_static" type="StaticBody2D" parent="bg/Container2" index="0"]
-
-position = Vector2( 0.537567, 0.417664 )
-scale = Vector2( 2.99181, 2.99181 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="bg/Container2/chair_static" index="0"]
-
-texture = ExtResource( 8 )
-flip_h = true
-_sections_unfolded = [ "Offset", "Region" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container2/chair_static" index="1"]
-
-shape = SubResource( 8 )
-
-[node name="chair_static2" type="StaticBody2D" parent="bg/Container2" index="1"]
-
-position = Vector2( 2.20786, 88.3957 )
-scale = Vector2( 2.99181, 2.99181 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="bg/Container2/chair_static2" index="0"]
-
-texture = ExtResource( 8 )
-flip_h = true
-_sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "Z Index" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container2/chair_static2" index="1"]
-
-shape = SubResource( 8 )
-
-[node name="Container3" type="Container" parent="bg" index="3"]
-
-editor/display_folded = true
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 468.0
-margin_top = 418.0
-margin_right = 508.0
-margin_bottom = 458.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-
-[node name="chair_static3" type="StaticBody2D" parent="bg/Container3" index="0"]
-
-editor/display_folded = true
-position = Vector2( 21.4136, -2.88257 )
-scale = Vector2( 2.99181, 2.99181 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="bg/Container3/chair_static3" index="0"]
-
-texture = ExtResource( 9 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container3/chair_static3" index="1"]
-
-shape = SubResource( 8 )
-
-[node name="chair_static4" type="StaticBody2D" parent="bg/Container3" index="1"]
-
-editor/display_folded = true
-position = Vector2( 95.6212, -2.88257 )
-scale = Vector2( 2.99181, 2.99181 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="bg/Container3/chair_static4" index="0"]
-
-texture = ExtResource( 9 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container3/chair_static4" index="1"]
-
-shape = SubResource( 8 )
-
-[node name="door" type="StaticBody2D" parent="bg" index="4"]
-
-editor/display_folded = true
-position = Vector2( 1032.19, 299.588 )
+position = Vector2( 1, 479 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -839,20 +724,21 @@ bounce = 0.0
 
 [node name="Sprite" type="Sprite" parent="bg/door" index="0"]
 
-position = Vector2( 12.5383, -21.9671 )
-scale = Vector2( 5.84488, 5.84488 )
-texture = ExtResource( 10 )
+position = Vector2( 50, -460 )
+scale = Vector2( 2.87773, 2.87773 )
+texture = ExtResource( 7 )
+flip_h = true
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg/door" index="1"]
 
-position = Vector2( 19.8094, -22.0002 )
-scale = Vector2( 1.36215, 1 )
+position = Vector2( 49.6488, -460 )
+scale = Vector2( 1.36215, 0.808432 )
 shape = SubResource( 9 )
 
 [node name="Area2D" type="Area2D" parent="bg/door" index="2"]
 
-editor/display_folded = true
-position = Vector2( 22.1606, -23.2688 )
+position = Vector2( 52, -444.681 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -863,10 +749,11 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg/door/Area2D" index="0"]
 
-position = Vector2( -2.21619, 0 )
+position = Vector2( 1.28381, 1.91243 )
+scale = Vector2( 1.08099, 1.02365 )
 shape = SubResource( 10 )
 
-[node name="Container4" type="Container" parent="bg" index="5"]
+[node name="Container4" type="Container" parent="bg" index="1"]
 
 editor/display_folded = true
 anchor_left = 0.0
@@ -889,34 +776,8 @@ __meta__ = {
 
 [node name="plant" type="StaticBody2D" parent="bg/Container4" index="0"]
 
-position = Vector2( 6.76556, -9.81223 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
-
-[node name="Sprite" type="Sprite" parent="bg/Container4/plant" index="0"]
-
-position = Vector2( -5.97356, -195.812 )
-scale = Vector2( 3.30368, 3.19859 )
-texture = ExtResource( 11 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container4/plant" index="1"]
-
-position = Vector2( -5.13815, -195.71 )
-scale = Vector2( 2.3128, 1.7754 )
-shape = SubResource( 11 )
-
-[node name="plant2" type="StaticBody2D" parent="bg/Container4" index="1"]
-
-position = Vector2( 995.133, -7.76166 )
+editor/display_folded = true
+position = Vector2( 1002, -30 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -928,22 +789,22 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="bg/Container4/plant2" index="0"]
+[node name="Sprite" type="Sprite" parent="bg/Container4/plant" index="0"]
 
 position = Vector2( -5.97356, -195.812 )
 scale = Vector2( 3.30368, 3.19859 )
-texture = ExtResource( 11 )
+texture = ExtResource( 8 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container4/plant2" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container4/plant" index="1"]
 
 position = Vector2( -5.13815, -195.71 )
 scale = Vector2( 2.3128, 1.7754 )
 shape = SubResource( 11 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="bg/Container4" index="2"]
+[node name="StaticBody2D" type="StaticBody2D" parent="bg/Container4" index="1"]
 
 editor/display_folded = true
-position = Vector2( 0.763123, 0.9561 )
+position = Vector2( 702, 0 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -959,7 +820,7 @@ __meta__ = {
 
 position = Vector2( 131.223, -226.869 )
 scale = Vector2( 2.84374, 2.29273 )
-texture = ExtResource( 12 )
+texture = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container4/StaticBody2D" index="1"]
 
@@ -967,195 +828,8 @@ position = Vector2( 130.596, -224.507 )
 scale = Vector2( 2.37828, 12.4017 )
 shape = SubResource( 12 )
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="bg/Container4" index="3"]
+[node name="Area2D" type="Area2D" parent="bg" index="2"]
 
-editor/display_folded = true
-position = Vector2( 184.531, 0.956085 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="bg/Container4/StaticBody2D2" index="0"]
-
-position = Vector2( 131.223, -226.869 )
-scale = Vector2( 2.84374, 2.29273 )
-texture = ExtResource( 12 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container4/StaticBody2D2" index="1"]
-
-position = Vector2( 130.596, -224.507 )
-scale = Vector2( 2.37828, 12.4017 )
-shape = SubResource( 12 )
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="bg/Container4" index="4"]
-
-editor/display_folded = true
-position = Vector2( 368.532, 0.95607 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="bg/Container4/StaticBody2D3" index="0"]
-
-position = Vector2( 131.223, -226.869 )
-scale = Vector2( 2.84374, 2.29273 )
-texture = ExtResource( 12 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container4/StaticBody2D3" index="1"]
-
-position = Vector2( 130.596, -224.507 )
-scale = Vector2( 2.37828, 12.4017 )
-shape = SubResource( 12 )
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="bg/Container4" index="5"]
-
-editor/display_folded = true
-position = Vector2( 554.321, 1.14157 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="bg/Container4/StaticBody2D4" index="0"]
-
-position = Vector2( 131.223, -226.869 )
-scale = Vector2( 2.84374, 2.29273 )
-texture = ExtResource( 12 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container4/StaticBody2D4" index="1"]
-
-position = Vector2( 130.596, -224.507 )
-scale = Vector2( 2.37828, 12.4017 )
-shape = SubResource( 12 )
-
-[node name="StaticBody2D5" type="StaticBody2D" parent="bg/Container4" index="6"]
-
-editor/display_folded = true
-position = Vector2( 737.321, 1.14157 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="bg/Container4/StaticBody2D5" index="0"]
-
-position = Vector2( 131.223, -226.869 )
-scale = Vector2( 2.84374, 2.29273 )
-texture = ExtResource( 12 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Container4/StaticBody2D5" index="1"]
-
-position = Vector2( 130.596, -224.507 )
-scale = Vector2( 2.37828, 12.4017 )
-shape = SubResource( 12 )
-
-[node name="person" type="StaticBody2D" parent="bg" index="6"]
-
-editor/display_folded = true
-position = Vector2( 774.484, 209.142 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Transform" ]
-
-[node name="Sprite" type="Sprite" parent="bg/person" index="0"]
-
-position = Vector2( -662.132, -49.5665 )
-scale = Vector2( 0.527127, 0.527127 )
-z_index = 100
-texture = ExtResource( 13 )
-_sections_unfolded = [ "Animation", "Region" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/person" index="1"]
-
-position = Vector2( -658.958, 5.107 )
-scale = Vector2( 1, 2.49229 )
-shape = SubResource( 13 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="bg/person" index="2"]
-
-root_node = NodePath("..")
-autoplay = "person"
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/person = SubResource( 14 )
-blend_times = [  ]
-
-[node name="person2" type="StaticBody2D" parent="bg" index="7"]
-
-editor/display_folded = true
-position = Vector2( 774.321, 209.142 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="bg/person2" index="0"]
-
-position = Vector2( 67.015, 168.807 )
-scale = Vector2( 0.527127, 0.527127 )
-z_index = 100
-texture = ExtResource( 13 )
-flip_h = true
-_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/person2" index="1"]
-
-position = Vector2( 66.679, 209.858 )
-scale = Vector2( 1, 2.49229 )
-shape = SubResource( 13 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="bg/person2" index="2"]
-
-root_node = NodePath("..")
-autoplay = "loopsito"
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/loopsito = SubResource( 15 )
-blend_times = [  ]
-
-[node name="Area2D" type="Area2D" parent="bg" index="8"]
-
-editor/display_folded = true
 position = Vector2( 411, 219 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -1167,12 +841,158 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Area2D" index="0"]
 
-position = Vector2( 120, 70 )
-scale = Vector2( 1, 2.7093 )
+position = Vector2( 160, -195 )
+scale = Vector2( 0.226776, 1.5859 )
 shape = SubResource( 16 )
+
+[node name="bed" type="StaticBody2D" parent="bg" index="3"]
+
+editor/display_folded = true
+position = Vector2( -709, 239 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="bg/bed" index="0"]
+
+position = Vector2( 903, 100.25 )
+scale = Vector2( 2.19444, 2.19444 )
+texture = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/bed" index="1"]
+
+position = Vector2( 901, 99 )
+scale = Vector2( 6.92307, 0.526042 )
+shape = SubResource( 17 )
+
+[node name="desk" type="StaticBody2D" parent="bg" index="4"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="bg/desk" index="0"]
+
+position = Vector2( 1011, 439 )
+scale = Vector2( 3, 3 )
+z_index = 4096
+texture = ExtResource( 11 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/desk" index="1"]
+
+position = Vector2( 1011, 452.5 )
+scale = Vector2( 5.38462, 8.96154 )
+shape = SubResource( 18 )
+
+[node name="CHARI" type="StaticBody2D" parent="bg" index="5"]
+
+position = Vector2( 901, 469 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="Sprite" type="Sprite" parent="bg/CHARI" index="0"]
+
+position = Vector2( 10, 0 )
+scale = Vector2( 3.5184, 3.5184 )
+z_index = 4096
+texture = ExtResource( 12 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/CHARI" index="1"]
+
+position = Vector2( 10, 10 )
+scale = Vector2( 3.07692, 3.46154 )
+shape = SubResource( 19 )
+
+[node name="mirror" type="StaticBody2D" parent="bg" index="6"]
+
+position = Vector2( 261, 9 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="Sprite" type="Sprite" parent="bg/mirror" index="0"]
+
+position = Vector2( 10, 10 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 13 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/mirror" index="1"]
+
+position = Vector2( 10, 10 )
+scale = Vector2( 3.07692, 5.38461 )
+shape = SubResource( 20 )
+
+[node name="Area2D" type="Area2D" parent="bg/mirror" index="2"]
+
+position = Vector2( 10, 10 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/mirror/Area2D" index="0"]
+
+position = Vector2( -2.14577e-06, 15 )
+scale = Vector2( 3.07692, 6.53846 )
+shape = SubResource( 22 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="bg" index="7"]
+
+position = Vector2( 541, 29 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="Sprite" type="Sprite" parent="bg/StaticBody2D" index="0"]
+
+position = Vector2( 30, -20 )
+scale = Vector2( 4.82609, 4.82609 )
+texture = ExtResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/StaticBody2D" index="1"]
+
+position = Vector2( 30, -15 )
+scale = Vector2( 3.84616, 5.76923 )
+shape = SubResource( 21 )
 
 [connection signal="body_entered" from="bg/door/Area2D" to="." method="_on_Area2D_body_entered"]
 
 [connection signal="body_entered" from="bg/Area2D" to="." method="_on_real_trigger"]
+
+[connection signal="body_entered" from="bg/mirror/Area2D" to="." method="_on_mirror_collide"]
 
 
