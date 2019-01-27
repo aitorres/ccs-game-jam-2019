@@ -46,7 +46,7 @@ func _process(delta):
 func _on_Area2D_body_entered(body):
 	if not (body is StaticBody2D):
 		if node.done:
-			aux_node.longText = \"it is time\\nto go home.\"
+			aux_node.longText = \"it is time to go home.\"
 			aux_node.reset_config()
 			aux_node.reset_text(true)
 			yield(get_tree().create_timer(3.5), \"timeout\")

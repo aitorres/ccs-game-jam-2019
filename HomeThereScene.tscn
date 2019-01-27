@@ -25,7 +25,7 @@ script/source = "extends Container
 # var b = \"textvar\"
 
 export var next_song = 1
-export var next_scene = \"res://Credits.tscn\"
+export var next_scene = \"res://BusHereScene.tscn\"
 export var poem_container_path = \"textbox/Container/Background/poem\"
 
 var node
