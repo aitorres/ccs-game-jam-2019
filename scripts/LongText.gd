@@ -37,7 +37,7 @@ func reset_text(state):
 	config_text()
 	if background == null:
 		background = get_parent()
-	
+
 	if start:
 		background.show()
 		show()
@@ -58,7 +58,7 @@ func config_text():
 		textComplete = true
 		charComplete = true
 		return
-	
+
 	if startOnFirstLine:
 		currText = arrText[0]
 		curPos = 1
@@ -68,13 +68,13 @@ func config_text():
 		curPos = 0
 		linePos = 0
 		charComplete = true
-	
+
 	visible_characters = 0
 	parse_bbcode(currText)
 
 	imgRegex.compile("\\[img\\].*\\[/img\\]")
 	bbcodeRegex.compile("\\[[^\\]]*\\]")
-	
+
 
 
 func _process(delta):
@@ -83,7 +83,7 @@ func _process(delta):
 	if start:
 		animateText(delta)
 
-	
+
 func animateText(delta):
 	if !textComplete || (textComplete && !charComplete):
 		if charComplete:
@@ -100,9 +100,9 @@ func animateText(delta):
 					print("Clear")
 
 				currLine += "\n"
-				
+
 				visible_characters = 0
-				currText += currLine 
+				currText += currLine
 				targetChar = currLine.length()
 				parse_bbcode(currText)
 				curPos += 1
@@ -123,8 +123,8 @@ func animateText(delta):
 				visible_characters += 1
 				targetChar -= advance
 				linePos += advance
-				
-				
+
+
 				if targetChar <= 0:
 					charComplete = true
 					charAccTime = 0
@@ -144,7 +144,7 @@ func animateText(delta):
 func charsToSkip():
 	if currLine[linePos] != "[":
 		return 1
-	
+
 	var regexRes = imgRegex.search(currLine, linePos)
 
 	if regexRes:
