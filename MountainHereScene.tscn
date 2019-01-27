@@ -1,13 +1,13 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://SceneManager.gd" type="Script" id=1]
 [ext_resource path="res://WASDmovement.gd" type="Script" id=2]
 [ext_resource path="res://assets/sprites/characters/here_man.png" type="Texture" id=3]
-[ext_resource path="res://assets/sprites/Scene 6/clouds-3.png" type="Texture" id=4]
-[ext_resource path="res://assets/sprites/Scene 6/clouds-4.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/Scene 6 H - Mountain/clouds-3.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/Scene 6 H - Mountain/clouds-4.png" type="Texture" id=5]
 [ext_resource path="res://assets/montain background.png" type="Texture" id=6]
-[ext_resource path="res://assets/sprites/Scene 6/mountains.png" type="Texture" id=7]
-[ext_resource path="res://assets/sprites/Scene 6/background mountain.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/Scene 6 H - Mountain/mountains.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/Scene 6 H - Mountain/background mountain.png" type="Texture" id=8]
 [ext_resource path="res://assets/fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=9]
 [ext_resource path="res://scripts/LongText.gd" type="Script" id=10]
 
@@ -60,15 +60,20 @@ tracks/1/keys = {
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
-extents = Vector2( 100.029, 31.8606 )
+extents = Vector2( 138.558, 31.8606 )
 
-[sub_resource type="Theme" id=6]
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 11.0734, 10 )
+
+[sub_resource type="Theme" id=7]
 
 _sections_unfolded = [ "Resource" ]
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=8]
 
-size = 70
+size = 65
 use_mipmaps = false
 use_filter = false
 extra_spacing_char = 5
@@ -263,7 +268,6 @@ _sections_unfolded = [ "Animation", "Material", "Region", "Transform", "Visibili
 
 [node name="TextureRect" type="TextureRect" parent="." index="7"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -343,9 +347,26 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Area2D" index="0"]
 
-position = Vector2( -3.3345, 0 )
+position = Vector2( 0.351913, 0 )
 scale = Vector2( 0.444163, 1 )
 shape = SubResource( 5 )
+
+[node name="Area2D2" type="Area2D" parent="TextureRect" index="3"]
+
+position = Vector2( 481.939, 497.118 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Area2D2" index="0"]
+
+position = Vector2( 34.5329, 3.34562 )
+scale = Vector2( 50.101, 4.01684 )
+shape = SubResource( 6 )
 
 [node name="textbox" type="Container" parent="." index="8"]
 
@@ -363,7 +384,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-theme = SubResource( 6 )
+theme = SubResource( 7 )
 _sections_unfolded = [ "Anchor", "Focus", "Material", "Mouse", "Pause", "Size Flags", "Theme" ]
 __meta__ = {
 "_edit_group_": true,
@@ -427,7 +448,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-custom_fonts/normal_font = SubResource( 7 )
+custom_fonts/normal_font = SubResource( 8 )
 bbcode_enabled = true
 bbcode_text = "awefwaefwafawefwef"
 visible_characters = -1
@@ -444,12 +465,17 @@ _sections_unfolded = [ "BBCode", "Size Flags", "Theme", "Visibility", "custom_co
 lineWaitTime = 0.5
 charWaitTime = 0.1
 vibrateWaitTime = 0.001
-longText = "This is a test
-\\\\c[vibrate]This is another test
-\\\\c[vibrate=0.03]This is another test 2
-\\\\c[vibrate=0.01]This is another test 3
-\\\\c[vibrate=0.01,10]I hate you
-\\\\c[line=1]\\n"
+longText = "i am not reaching out in the dark
+\\\\cfor today i have conquered the mountain
+\\\\cand even though it felt like a monster at first
+\\\\csometimes a little push is all you need
+\\\\cand the fresh air\\nand the breeze around you
+\\\\ccan make you forget a bad day
+\\\\cor week or year
+\\\\ceven if just for a moment
+\\\\cbecause there is nothing more fulfilling
+\\\\cthan allowing yourself to find your clear sky
+\\\\cand see the bright stars"
 start = false
 startOnFirstLine = false
 vibrate = false
@@ -457,5 +483,7 @@ done = false
 vibrateMax = 20
 
 [connection signal="body_entered" from="TextureRect/Area2D" to="textbox/Container/Background/poem" method="_on_Area2D_body_entered"]
+
+[connection signal="body_entered" from="TextureRect/Area2D2" to="." method="_on_try_to_leave"]
 
 

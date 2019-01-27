@@ -12,8 +12,6 @@ export(bool) var vibrate = false
 export(bool) var done = false
 export(float, 0, 20, 0.01) var vibrateMax = 20
 
-var triggered = -1
-
 var arrText = []
 var currText = ""
 var curPos = 0
@@ -224,6 +222,5 @@ func vibrate():
 	rect_position = textCenter + Vector2(0, mov)
 
 func _on_Area2D_body_entered(body):
-	triggered += 1
-	if triggered == 1:
+	if not (body is StaticBody2D):
 		reset_text(true)
