@@ -330,7 +330,7 @@ _sections_unfolded = [ "Z Index" ]
 
 position = Vector2( -59.9744, -186.817 )
 scale = Vector2( 2.47418, 1.47588 )
-z_index = -1
+z_index = 200
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -345,14 +345,14 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Area2D" index="0"]
 
-position = Vector2( 22.571, 219.748 )
+position = Vector2( 45.9912, 207.26 )
 scale = Vector2( 0.444163, 0.855804 )
 shape = SubResource( 5 )
 _sections_unfolded = [ "Z Index" ]
 
 [node name="Mark" parent="Background/Area2D" index="1" instance=ExtResource( 7 )]
 
-position = Vector2( 21.7278, 221.62 )
+position = Vector2( 45.148, 210.381 )
 scale = Vector2( 0.609755, 0.755531 )
 z_index = 200
 _sections_unfolded = [ "Z Index" ]
