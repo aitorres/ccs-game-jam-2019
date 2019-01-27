@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://WASDmovement.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/characters/here_man.png" type="Texture" id=2]
@@ -55,6 +55,12 @@ func _on_Area2D_body_entered(body):
 			if aux_node.done:
 				aux_node.reset_config()
 				aux_node.reset_text(true)
+
+func _on_real_trigger(body):
+	if not (body is StaticBody2D):
+		if not node.done and aux_node.done:
+			node.reset_text(true)
+			node.done = true
 "
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -158,7 +164,12 @@ tracks/0/keys = {
 "values": [ Vector2( 67.015, 168.807 ), Vector2( 67.015, 168.807 ), Vector2( 105.878, 168.807 ), Vector2( 67.015, 168.807 ), Vector2( 67.015, 168.807 ) ]
 }
 
-[node name="root" type="Container" index="0"]
+[sub_resource type="RectangleShape2D" id=16]
+
+custom_solver_bias = 0.0
+extents = Vector2( 180, 44.2918 )
+
+[node name="root" type="Container"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -349,7 +360,6 @@ __meta__ = {
 
 [node name="textbox" type="Container" parent="." index="3"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -393,7 +403,6 @@ __meta__ = {
 
 [node name="Background" type="Panel" parent="textbox/Container" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -443,12 +452,19 @@ selection_enabled = false
 override_selected_font_color = false
 script = ExtResource( 5 )
 _sections_unfolded = [ "BBCode", "Size Flags", "Theme", "Visibility", "custom_constants", "custom_fonts" ]
-lineWaitTime = 0.5
+lineWaitTime = 0.7
 charWaitTime = 0.1
 vibrateWaitTime = 0.001
-longText = "This is a test
-\\\\cThis is another test
-\\\\cBye!"
+longText = "empty chairs and empty faces fill this place
+\\\\cwithout joy\\nwithout hope or sense
+\\\\cthese arched days i rarely\\nthink of survival
+\\\\cit is clear\\nin their void stares
+\\\\cdeny it, but i am alone
+\\\\ccolor is nothing\\nbut a deceiving mirror
+\\\\creflecting a perpetual lie
+\\\\cis his okay?\\nno, it is not
+\\\\ci am far away from home
+\\\\cand the clock is ticking away"
 start = false
 startOnFirstLine = false
 vibrate = false
@@ -563,6 +579,7 @@ vibrateMax = 20
 
 [node name="bg" type="TextureRect" parent="." index="5"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1060,6 +1077,7 @@ shape = SubResource( 12 )
 
 [node name="person" type="StaticBody2D" parent="bg" index="6"]
 
+editor/display_folded = true
 position = Vector2( 774.484, 209.142 )
 input_pickable = false
 collision_layer = 1
@@ -1096,6 +1114,7 @@ blend_times = [  ]
 
 [node name="person2" type="StaticBody2D" parent="bg" index="7"]
 
+editor/display_folded = true
 position = Vector2( 774.321, 209.142 )
 input_pickable = false
 collision_layer = 1
@@ -1134,6 +1153,26 @@ playback_speed = 1.0
 anims/loopsito = SubResource( 15 )
 blend_times = [  ]
 
+[node name="Area2D" type="Area2D" parent="bg" index="8"]
+
+editor/display_folded = true
+position = Vector2( 411, 219 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Area2D" index="0"]
+
+position = Vector2( 120, 70 )
+scale = Vector2( 1, 2.7093 )
+shape = SubResource( 16 )
+
 [connection signal="body_entered" from="bg/door/Area2D" to="." method="_on_Area2D_body_entered"]
+
+[connection signal="body_entered" from="bg/Area2D" to="." method="_on_real_trigger"]
 
 
