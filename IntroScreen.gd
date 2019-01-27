@@ -6,7 +6,7 @@ extends Control
 
 export(bool) var change_song = false
 export var next_song = 1
-export var next_scene = "res://WorkWorkHereScene.tscn"
+export var next_scene = "res://WorkHereScene.tscn"
 
 var credits = [
 	"\"ONE IS BUT A THING",
@@ -32,7 +32,7 @@ func _process(delta):
 			next_exit = true
 			counter = credits.size()
 		else:
-			get_tree().change_scene(next_scene)
+			get_tree().change_scene("res://WorkHereScene.tscn")
 
 func next_credit():
 	if (counter < credits.size()):
@@ -41,4 +41,4 @@ func next_credit():
 	else:
 		if change_song:
 			AudioManager.changeSong(next_song)
-		get_tree().change_scene(next_scene)
+		get_tree().change_scene("res://WorkHereScene.tscn")
