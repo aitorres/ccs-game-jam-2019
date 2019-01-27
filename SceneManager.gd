@@ -2,7 +2,7 @@ extends Container
 
 export(bool) var change_song = false
 export var next_song = 1
-export var next_scene = "res://Credits.tscn"
+export var next_scene = "res://ParkScene.tscn"
 export var poem_container_path = "textbox/Container/Background/poem"
 
 func _on_try_to_leave(body):
