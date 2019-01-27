@@ -24,6 +24,7 @@ script/source = "extends Container
 # var a = 2
 # var b = \"textvar\"
 
+export(bool) var change_song = true
 export var next_song = 1
 export var next_scene = \"res://BusHereScene.tscn\"
 export var poem_container_path = \"textbox/Container/Background/poem\"
@@ -32,55 +33,78 @@ var node
 var aux_node
 var mirror_node
 
+var node_active = false
+var aux_node_active = false
+var mirror_node_active = false
+
+var fade_out_time = 2.0
+var fade_node = null
+
 func _ready():
+	
+	var scene = preload(\"res://FadeControl.tscn\") # Will load when parsing the script.
+	fade_node = scene.instance()
+	add_child(fade_node)
+	
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	node = get_node(poem_container_path)
 	aux_node = get_node(\"aux_textbox/Container/Background/poem\")
 	mirror_node = get_node(\"mirror_textbox/Container/Background/poem\")
-	node.done = false
-	aux_node.done = true
-	mirror_node.done = true
-	pass
+	#node.done = false
+	#aux_node.done = true
+	#mirror_node.done = true
+	node_active = false
+	aux_node_active = true
+	mirror_node_active = true
 
 func _process(delta):
 	if node.done:
 		#
 		print(\"Done\")
+		
+func fadeOut():
+	print(\"Fading Out\")
+	fade_node.get_node(\"AnimationPlayer\").play(\"FadeOut\")
+	if change_song:
+		AudioManager.changeSong(next_song)
+	yield(get_tree().create_timer(fade_out_time), \"timeout\")
+	get_tree().change_scene(next_scene)
 
 func _on_Area2D_body_entered(body):
 	if not (body is StaticBody2D):
-		if node.done:
+		if node_active:
 			aux_node.longText = \"maybe i just need to distract myself.\"
 			aux_node.reset_config()
 			aux_node.reset_text(true)
 			yield(get_tree().create_timer(3.5), \"timeout\")
-			AudioManager.changeSong(next_song)
-			get_tree().change_scene(next_scene)
+			fadeOut()
 		else:
-			if aux_node.done:
+			if aux_node_active:
 				aux_node.reset_config()
 				aux_node.reset_text(true)
 
 func _on_real_trigger(body):
 	if not (body is StaticBody2D):
-		if not node.done and aux_node.done and mirror_node.done:
+		if not node_active and aux_node_active and mirror_node_active:
 			node.reset_text(true)
-			node.done = true
-		elif node.done:
+			node_active = true
+		elif node_active:
 			node.longText = \"i miss my childhood sunsets\"
 			node.reset_config()
 			node.reset_text(true)
-			node.done = true
+			node_active = true
+			mirror_node_active = true
 
 func _on_mirror_collide(body):
 	if not (body is StaticBody2D):
-		if node.done:
+		if node_active:
 			mirror_node.longText = \"...but for a second i glimpse a smile on my face\"
 			mirror_node.reset_config()
 			mirror_node.reset_text(true)
+			aux_node = true
 		else:
-			if mirror_node.done:
+			if mirror_node_active:
 				mirror_node.reset_config()
 				mirror_node.reset_text(true)
 "
@@ -181,6 +205,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = SubResource( 1 )
+change_song = true
 next_song = 1
 next_scene = "res://BusHereScene.tscn"
 poem_container_path = "textbox/Container/Background/poem"
@@ -476,7 +501,6 @@ vibrateMax = 20
 
 [node name="aux_textbox" type="Container" parent="." index="4"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -586,7 +610,6 @@ vibrateMax = 20
 
 [node name="mirror_textbox" type="Container" parent="." index="5"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -904,6 +927,7 @@ shape = SubResource( 13 )
 
 [node name="CHARI" type="StaticBody2D" parent="bg" index="5"]
 
+editor/display_folded = true
 position = Vector2( 901, 469 )
 input_pickable = false
 collision_layer = 1
@@ -929,6 +953,7 @@ shape = SubResource( 14 )
 
 [node name="mirror" type="StaticBody2D" parent="bg" index="6"]
 
+editor/display_folded = true
 position = Vector2( 261, 9 )
 input_pickable = false
 collision_layer = 1
@@ -963,12 +988,13 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg/mirror/Area2D" index="0"]
 
-position = Vector2( -2.14577e-06, 15 )
+position = Vector2( -2.14577e-006, 15 )
 scale = Vector2( 3.07692, 6.53846 )
 shape = SubResource( 16 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="bg" index="7"]
 
+editor/display_folded = true
 position = Vector2( 541, 29 )
 input_pickable = false
 collision_layer = 1
@@ -992,24 +1018,28 @@ shape = SubResource( 17 )
 
 [node name="Area2D2" parent="." index="7" instance=ExtResource( 15 )]
 
-position = Vector2( 700, 10 )
-scale = Vector2( 1.92174, 1.09559 )
+position = Vector2( 682.105, 119 )
+scale = Vector2( 2.23684, 1.33224 )
+z_index = 2
+_sections_unfolded = [ "Z Index" ]
 nextMark = NodePath("../Area2D3")
 poemPath = NodePath("../aux_textbox/Container/Background/poem")
 
 [node name="Area2D" parent="." index="8" instance=ExtResource( 15 )]
 
-position = Vector2( 390, 30 )
+position = Vector2( 380.526, 121.579 )
 z_index = 5
 _sections_unfolded = [ "Z Index" ]
 startActive = true
-nextMark = NodePath("Area2D")
+nextMark = NodePath("../Area2D2")
 poemPath = NodePath("../mirror_textbox/Container/Background/poem")
 
 [node name="Area2D3" parent="." index="9" instance=ExtResource( 15 )]
 
-position = Vector2( 150, 30 )
-scale = Vector2( 1.49306, 0.925856 )
+position = Vector2( 159.415, 126.419 )
+scale = Vector2( 2.21857, 1.26803 )
+z_index = 2
+_sections_unfolded = [ "Z Index" ]
 poemPath = NodePath("../textbox/Container/Background/poem")
 
 [connection signal="body_entered" from="bg/door/Area2D" to="." method="_on_Area2D_body_entered"]
