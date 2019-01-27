@@ -27,4 +27,4 @@ func next_credit():
 		get_node("Text").set_text(credits[counter])
 		counter += 1
 	else:
-		get_tree().change_scene("res://Credits.tscn")
+		get_tree().change_scene("res://MountainHereScene.tscn")

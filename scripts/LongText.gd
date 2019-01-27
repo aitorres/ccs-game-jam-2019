@@ -9,6 +9,8 @@ export(bool) var start = false
 export(bool) var startOnFirstLine = false
 export(bool) var done = false
 
+var triggered = -1
+
 var arrText = []
 var currText = ""
 var curPos = 0
@@ -30,12 +32,14 @@ var lineWaitRegex = RegEx.new()
 var background = null
 
 func reset_text(state):
+	print("Hola")
+	print(state)
 	start = state
 	done = false
 	config_text()
 	if background == null:
 		background = get_parent()
-	
+
 	if start:
 		background.show()
 		show()
@@ -45,7 +49,6 @@ func reset_text(state):
 
 func _ready():
 	reset_text(start)
-	
 
 func config_text():
 	if longText != null:
@@ -57,7 +60,7 @@ func config_text():
 		textComplete = true
 		charComplete = true
 		return
-	
+
 	if startOnFirstLine:
 		currText = arrText[0]
 		curPos = 1
@@ -67,7 +70,7 @@ func config_text():
 		curPos = 0
 		linePos = 0
 		charComplete = true
-	
+
 	visible_characters = 0
 	parse_bbcode(currText)
 
@@ -84,7 +87,7 @@ func _process(delta):
 	if start:
 		animateText(delta)
 
-	
+
 func animateText(delta):
 	if !textComplete || (textComplete && !charComplete):
 		if charComplete:
@@ -115,9 +118,9 @@ func animateText(delta):
 					print("lineWait=" + regexRes.get_string("val"))
 
 				currLine += "\n"
-				
+
 				visible_characters = 0
-				currText += currLine 
+				currText += currLine
 				targetChar = currLine.length()
 				parse_bbcode(currText)
 				curPos += 1
@@ -138,8 +141,8 @@ func animateText(delta):
 				visible_characters += 1
 				targetChar -= advance
 				linePos += advance
-				
-				
+
+
 				if targetChar <= 0:
 					charComplete = true
 					charAccTime = 0
@@ -153,12 +156,13 @@ func animateText(delta):
 			start = false
 			done = true
 			clear()
+			get_parent().hide()
 
 
 func charsToSkip():
 	if currLine[linePos] != "[":
 		return 1
-	
+
 	var regexRes = imgRegex.search(currLine, linePos)
 
 	if regexRes:
@@ -168,6 +172,9 @@ func charsToSkip():
 
 	if regexRes:
 		return regexRes.get_string().length()
-	
-	
 
+
+func _on_Area2D_body_entered(body):
+	triggered += 1
+	if triggered == 1:
+		reset_text(true)
