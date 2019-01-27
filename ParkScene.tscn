@@ -197,7 +197,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = SubResource( 1 )
-next_song = 4
+next_song = 2
 next_scene = "res://BeachThereScene.tscn"
 poem_container_path = "textbox/Container/Background/poem"
 

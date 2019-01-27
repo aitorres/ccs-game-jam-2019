@@ -257,7 +257,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 180, 19.4523 )
 
-[node name="root" type="Container"]
+[node name="root" type="Container" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
