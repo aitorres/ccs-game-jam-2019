@@ -46,7 +46,7 @@ func _process(delta):
 func _on_Area2D_body_entered(body):
 	if not (body is StaticBody2D):
 		if node.done:
-			aux_node.longText = \"it is time.\"
+			aux_node.longText = \"it is time\\nto go home.\"
 			aux_node.reset_config()
 			aux_node.reset_text(true)
 			yield(get_tree().create_timer(3.5), \"timeout\")
@@ -169,7 +169,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 180, 44.2918 )
 
-[node name="root" type="Container"]
+[node name="root" type="Container" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
