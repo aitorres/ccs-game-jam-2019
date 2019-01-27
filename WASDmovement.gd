@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export (bool) var can_move = true
-export (int) var speed = 160
+export (int) var speed = 180
 
 var velocity = Vector2()
 
