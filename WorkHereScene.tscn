@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://WASDmovement.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/characters/here_man.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/sprites/Scene 1 H - Work/planta.png" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/estante.png" type="Texture" id=12]
 [ext_resource path="res://assets/sprites/characters/woman1.png" type="Texture" id=13]
+[ext_resource path="res://Mark.tscn" type="PackedScene" id=14]
 
 [sub_resource type="GDScript" id=1]
 
@@ -1169,6 +1170,24 @@ audio_bus_name = "Master"
 position = Vector2( 120, 70 )
 scale = Vector2( 1, 2.7093 )
 shape = SubResource( 16 )
+
+[node name="Area2D" parent="." index="6" instance=ExtResource( 14 )]
+
+position = Vector2( 428.935, 255 )
+scale = Vector2( 1.8458, 1.65625 )
+z_index = 5
+_sections_unfolded = [ "Z Index" ]
+startActive = true
+nextMark = NodePath("../Area2D2")
+poemPath = NodePath("../textbox/Container/Background/poem")
+
+[node name="Area2D2" parent="." index="7" instance=ExtResource( 14 )]
+
+position = Vector2( 1108.93, 265 )
+scale = Vector2( 1.8458, 1.65625 )
+z_index = 5
+_sections_unfolded = [ "Z Index" ]
+poemPath = NodePath("../textbox/Container/Background/poem")
 
 [connection signal="body_entered" from="bg/door/Area2D" to="." method="_on_Area2D_body_entered"]
 
