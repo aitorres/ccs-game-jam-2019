@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://WASDmovement.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/characters/there_man.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/sprites/Scene 1 H - Work/silla-lado.png" type="Texture" id=12]
 [ext_resource path="res://assets/sprites/Scene 2 T - House/espejo.png" type="Texture" id=13]
 [ext_resource path="res://assets/sprites/Scene 2 T - House/ventana.png" type="Texture" id=14]
+[ext_resource path="res://Mark.tscn" type="PackedScene" id=15]
 
 [sub_resource type="GDScript" id=1]
 
@@ -111,62 +112,62 @@ extra_spacing_char = 5
 font_data = ExtResource( 4 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 29.6232, 83.5873 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=8]
 
 custom_solver_bias = 0.0
 extents = Vector2( 40.2162, 77.8564 )
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=9]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 22.2578 )
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=10]
 
 custom_solver_bias = 0.0
 extents = Vector2( 38.7031, 5.55911 )
 
-[sub_resource type="RectangleShape2D" id=16]
+[sub_resource type="RectangleShape2D" id=11]
 
 custom_solver_bias = 0.0
 extents = Vector2( 180, 44.2918 )
 
-[sub_resource type="RectangleShape2D" id=17]
+[sub_resource type="RectangleShape2D" id=12]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 189 )
 
-[sub_resource type="RectangleShape2D" id=18]
+[sub_resource type="RectangleShape2D" id=13]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="RectangleShape2D" id=19]
+[sub_resource type="RectangleShape2D" id=14]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="RectangleShape2D" id=20]
+[sub_resource type="RectangleShape2D" id=15]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="RectangleShape2D" id=22]
+[sub_resource type="RectangleShape2D" id=16]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="RectangleShape2D" id=21]
+[sub_resource type="RectangleShape2D" id=17]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="root" type="Container" index="0"]
+[node name="root" type="Container"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -693,7 +694,6 @@ vibrateMax = 20
 
 [node name="bg" type="TextureRect" parent="." index="6"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -734,7 +734,7 @@ _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
 position = Vector2( 49.6488, -460 )
 scale = Vector2( 1.36215, 0.808432 )
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 
 [node name="Area2D" type="Area2D" parent="bg/door" index="2"]
 
@@ -751,7 +751,7 @@ audio_bus_name = "Master"
 
 position = Vector2( 1.28381, 1.91243 )
 scale = Vector2( 1.08099, 1.02365 )
-shape = SubResource( 10 )
+shape = SubResource( 8 )
 
 [node name="Container4" type="Container" parent="bg" index="1"]
 
@@ -799,7 +799,7 @@ texture = ExtResource( 8 )
 
 position = Vector2( -5.13815, -195.71 )
 scale = Vector2( 2.3128, 1.7754 )
-shape = SubResource( 11 )
+shape = SubResource( 9 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="bg/Container4" index="1"]
 
@@ -826,7 +826,7 @@ texture = ExtResource( 9 )
 
 position = Vector2( 130.596, -224.507 )
 scale = Vector2( 2.37828, 12.4017 )
-shape = SubResource( 12 )
+shape = SubResource( 10 )
 
 [node name="Area2D" type="Area2D" parent="bg" index="2"]
 
@@ -843,7 +843,7 @@ audio_bus_name = "Master"
 
 position = Vector2( 160, -195 )
 scale = Vector2( 0.226776, 1.5859 )
-shape = SubResource( 16 )
+shape = SubResource( 11 )
 
 [node name="bed" type="StaticBody2D" parent="bg" index="3"]
 
@@ -870,7 +870,7 @@ texture = ExtResource( 10 )
 
 position = Vector2( 901, 99 )
 scale = Vector2( 6.92307, 0.526042 )
-shape = SubResource( 17 )
+shape = SubResource( 12 )
 
 [node name="desk" type="StaticBody2D" parent="bg" index="4"]
 
@@ -899,7 +899,7 @@ _sections_unfolded = [ "Z Index" ]
 
 position = Vector2( 1011, 452.5 )
 scale = Vector2( 5.38462, 8.96154 )
-shape = SubResource( 18 )
+shape = SubResource( 13 )
 
 [node name="CHARI" type="StaticBody2D" parent="bg" index="5"]
 
@@ -924,7 +924,7 @@ _sections_unfolded = [ "Z Index" ]
 
 position = Vector2( 10, 10 )
 scale = Vector2( 3.07692, 3.46154 )
-shape = SubResource( 19 )
+shape = SubResource( 14 )
 
 [node name="mirror" type="StaticBody2D" parent="bg" index="6"]
 
@@ -947,7 +947,7 @@ texture = ExtResource( 13 )
 
 position = Vector2( 10, 10 )
 scale = Vector2( 3.07692, 5.38461 )
-shape = SubResource( 20 )
+shape = SubResource( 15 )
 
 [node name="Area2D" type="Area2D" parent="bg/mirror" index="2"]
 
@@ -964,7 +964,7 @@ audio_bus_name = "Master"
 
 position = Vector2( -2.14577e-06, 15 )
 scale = Vector2( 3.07692, 6.53846 )
-shape = SubResource( 22 )
+shape = SubResource( 16 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="bg" index="7"]
 
@@ -987,7 +987,29 @@ texture = ExtResource( 14 )
 
 position = Vector2( 30, -15 )
 scale = Vector2( 3.84616, 5.76923 )
-shape = SubResource( 21 )
+shape = SubResource( 17 )
+
+[node name="Area2D2" parent="." index="7" instance=ExtResource( 15 )]
+
+position = Vector2( 700, 10 )
+scale = Vector2( 1.92174, 1.09559 )
+nextMark = NodePath("../Area2D3")
+poemPath = NodePath("../aux_textbox/Container/Background/poem")
+
+[node name="Area2D" parent="." index="8" instance=ExtResource( 15 )]
+
+position = Vector2( 390, 30 )
+z_index = 5
+_sections_unfolded = [ "Z Index" ]
+startActive = true
+nextMark = NodePath("Area2D")
+poemPath = NodePath("../mirror_textbox/Container/Background/poem")
+
+[node name="Area2D3" parent="." index="9" instance=ExtResource( 15 )]
+
+position = Vector2( 150, 30 )
+scale = Vector2( 1.49306, 0.925856 )
+poemPath = NodePath("../textbox/Container/Background/poem")
 
 [connection signal="body_entered" from="bg/door/Area2D" to="." method="_on_Area2D_body_entered"]
 
