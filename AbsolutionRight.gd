@@ -27,20 +27,20 @@ func _call_mostrar_mensaje(body, mensaje):
 			mensaje
 		)
 		
-func first_area(body):
+func he_creado_siete_putas_funciones_iguales___como_crees_que_se_llama_esta(body):
 	_call_mostrar_mensaje(
 		body,
 		"things may seem shallow in the darkest of days"
 	)
 	
-func second_area(body):
+func sixth_area(body):
 	_call_mostrar_mensaje(
 		body,
 		"but there is always a light, big or small"
 	)
 
 
-func third_area(body):
+func fifth_area(body):
 	_call_mostrar_mensaje(
 		body,
 		"a fierce strength that comes from within youself"
@@ -53,19 +53,19 @@ func fourth_area(body):
 		"and helps you through every battle, no matter how hard"
 	)
 
-func fifth_area(body):
+func third_area(body):
 	_call_mostrar_mensaje(
 		body,
 		"this will surely be a difficult journey"
 	)
 
-func sixth_area(body):
+func second_area(body):
 	_call_mostrar_mensaje(
 		body,
 		"but a great one nonetheless"
 	)
 
-func he_creado_siete_putas_funciones_iguales___como_crees_que_se_llama_esta(body):
+func first_area(body):
 	_call_mostrar_mensaje(
 		body,
 		"and it is finally time"
