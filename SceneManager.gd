@@ -52,10 +52,14 @@ func hola(body):
 func salir(body):
 	if not (body is StaticBody2D):
 		if get_node(poem_container_path).done:
-			get_node(poem_container_path).longText = "time to go back and shine like a star"
+			get_node(poem_container_path).longText = "well, my bus is here and it is time"
 			get_node(poem_container_path).reset_config()
 			get_node(poem_container_path).reset_text(true)
 			yield(get_tree().create_timer(6), "timeout")
 			if change_song:
 				AudioManager.changeSong(next_song)
 			get_tree().change_scene(next_scene)
+		else:
+			get_node(poem_container_path).longText = "my bus has not yet arrived"
+			get_node(poem_container_path).reset_config()
+			get_node(poem_container_path).reset_text(true)
