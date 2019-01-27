@@ -25,7 +25,7 @@ script/source = "extends Container
 # var b = \"textvar\"
 
 export var next_song = 1
-export var next_scene = \"res://Credits.tscn\"
+export var next_scene = \"res://FamilyHereScene.tscn\"
 export var poem_container_path = \"textbox/Container/Background/poem\"
 
 var node
@@ -102,22 +102,22 @@ extents = Vector2( 29.6232, 83.5873 )
 custom_solver_bias = 0.0
 extents = Vector2( 40.2162, 77.8564 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=9]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 39.551 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=10]
 
 custom_solver_bias = 0.0
 extents = Vector2( 180, 44.2918 )
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=11]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="CircleShape2D" id=11]
+[sub_resource type="CircleShape2D" id=12]
 
 custom_solver_bias = 0.0
 radius = 10.0
@@ -319,7 +319,7 @@ __meta__ = {
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." index="1"]
 
 position = Vector2( -510, 560 )
-z_index = 10
+z_index = 4096
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -615,7 +615,6 @@ stretch_mode = 0
 
 [node name="door" type="StaticBody2D" parent="bg" index="0"]
 
-editor/display_folded = true
 position = Vector2( 961, 565 )
 input_pickable = false
 collision_layer = 1
@@ -630,7 +629,6 @@ bounce = 0.0
 position = Vector2( 50, -460 )
 scale = Vector2( 2.87773, 2.87773 )
 texture = ExtResource( 7 )
-flip_h = true
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg/door" index="1"]
@@ -666,7 +664,6 @@ _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform",
 
 [node name="tree2" type="StaticBody2D" parent="bg" index="2"]
 
-editor/display_folded = true
 position = Vector2( 271, 5 )
 input_pickable = false
 collision_layer = 1
@@ -683,7 +680,7 @@ __meta__ = {
 
 position = Vector2( 201, 75 )
 scale = Vector2( 1.86316, 1.86316 )
-z_index = 4096
+z_index = 4095
 texture = ExtResource( 9 )
 _sections_unfolded = [ "Z Index" ]
 
@@ -691,7 +688,7 @@ _sections_unfolded = [ "Z Index" ]
 
 position = Vector2( 196, 122.934 )
 scale = Vector2( 5, 1.12651 )
-shape = SubResource( 10 )
+shape = SubResource( 9 )
 
 [node name="tree5" type="StaticBody2D" parent="bg" index="3"]
 
@@ -712,7 +709,7 @@ __meta__ = {
 
 position = Vector2( 201, 75 )
 scale = Vector2( 1.86316, 1.86316 )
-z_index = 4096
+z_index = 4095
 texture = ExtResource( 9 )
 _sections_unfolded = [ "Z Index" ]
 
@@ -720,7 +717,7 @@ _sections_unfolded = [ "Z Index" ]
 
 position = Vector2( 196, 122.934 )
 scale = Vector2( 5, 1.12651 )
-shape = SubResource( 10 )
+shape = SubResource( 9 )
 
 [node name="tree6" type="StaticBody2D" parent="bg" index="4"]
 
@@ -741,7 +738,7 @@ __meta__ = {
 
 position = Vector2( 201, 75 )
 scale = Vector2( 1.86316, 1.86316 )
-z_index = 4096
+z_index = 4095
 texture = ExtResource( 9 )
 _sections_unfolded = [ "Z Index" ]
 
@@ -749,7 +746,7 @@ _sections_unfolded = [ "Z Index" ]
 
 position = Vector2( 196, 122.934 )
 scale = Vector2( 5, 1.12651 )
-shape = SubResource( 10 )
+shape = SubResource( 9 )
 
 [node name="tree3" type="StaticBody2D" parent="bg" index="5"]
 
@@ -770,7 +767,7 @@ __meta__ = {
 
 position = Vector2( 201, 75 )
 scale = Vector2( 1.86316, 1.86316 )
-z_index = 4096
+z_index = 4095
 texture = ExtResource( 9 )
 _sections_unfolded = [ "Z Index" ]
 
@@ -778,7 +775,7 @@ _sections_unfolded = [ "Z Index" ]
 
 position = Vector2( 196, 122.934 )
 scale = Vector2( 5, 1.12651 )
-shape = SubResource( 10 )
+shape = SubResource( 9 )
 
 [node name="tree4" type="StaticBody2D" parent="bg" index="6"]
 
@@ -799,7 +796,7 @@ __meta__ = {
 
 position = Vector2( 201, 75 )
 scale = Vector2( 1.86316, 1.86316 )
-z_index = 4096
+z_index = 4095
 texture = ExtResource( 9 )
 _sections_unfolded = [ "Z Index" ]
 
@@ -807,7 +804,7 @@ _sections_unfolded = [ "Z Index" ]
 
 position = Vector2( 196, 122.934 )
 scale = Vector2( 5, 1.12651 )
-shape = SubResource( 10 )
+shape = SubResource( 9 )
 
 [node name="flower19" type="Sprite" parent="bg" index="7"]
 
@@ -817,6 +814,7 @@ texture = ExtResource( 10 )
 
 [node name="rock" type="StaticBody2D" parent="bg" index="8"]
 
+editor/display_folded = true
 position = Vector2( 511, 475 )
 input_pickable = false
 collision_layer = 1
@@ -845,7 +843,7 @@ audio_bus_name = "Master"
 
 position = Vector2( 165, -215 )
 scale = Vector2( 0.300546, 0.951539 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="Sprite" type="Sprite" parent="bg/rock" index="1"]
 
@@ -857,11 +855,10 @@ texture = ExtResource( 11 )
 
 position = Vector2( 30, -20 )
 scale = Vector2( 3.84615, 3.07692 )
-shape = SubResource( 12 )
+shape = SubResource( 11 )
 
 [node name="Container" type="Container" parent="." index="6"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -1024,7 +1021,7 @@ _sections_unfolded = [ "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Container/bush" index="1"]
 
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
 [node name="bush2" type="StaticBody2D" parent="Container" index="22"]
 
@@ -1049,7 +1046,7 @@ _sections_unfolded = [ "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Container/bush2" index="1"]
 
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
 [node name="bush3" type="StaticBody2D" parent="Container" index="23"]
 
@@ -1074,7 +1071,7 @@ _sections_unfolded = [ "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Container/bush3" index="1"]
 
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
 [node name="bush4" type="StaticBody2D" parent="Container" index="24"]
 
@@ -1099,11 +1096,10 @@ _sections_unfolded = [ "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Container/bush4" index="1"]
 
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
 [node name="Node2D" type="Node2D" parent="." index="7"]
 
-editor/display_folded = true
 position = Vector2( 270, 150 )
 
 [node name="person" type="StaticBody2D" parent="Node2D" index="0"]

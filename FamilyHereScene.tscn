@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://WASDmovement.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/characters/here_man.png" type="Texture" id=2]
@@ -7,11 +7,13 @@
 [ext_resource path="res://assets/bgs/work.png" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/Scene 1 H - Work/mesa.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/Scene 1 H - Work/silla-lado.png" type="Texture" id=7]
-[ext_resource path="res://assets/sprites/Scene 1 H - Work/puerta.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/Scene 4 H - House/puerta.png" type="Texture" id=8]
 [ext_resource path="res://assets/sprites/Scene 1 H - Work/planta.png" type="Texture" id=9]
 [ext_resource path="res://assets/sprites/estante.png" type="Texture" id=10]
 [ext_resource path="res://assets/sprites/Scene 8 H - Family/man.png" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/characters/woman1.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/Scene 4 H - House/mueble.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/Scene 4 H - House/alfombra.png" type="Texture" id=14]
 
 [sub_resource type="GDScript" id=1]
 
@@ -22,7 +24,7 @@ script/source = "extends Container
 # var b = \"textvar\"
 
 export var next_song = 1
-export var next_scene = \"res://HomeThereScene.tscn\"
+export var next_scene = \"res://BeachThereScene.tscn\"
 export var poem_container_path = \"textbox/Container/Background/poem\"
 
 var node
@@ -103,12 +105,12 @@ extents = Vector2( 10, 12.8404 )
 [sub_resource type="RectangleShape2D" id=9]
 
 custom_solver_bias = 0.0
-extents = Vector2( 6.60736, 83.5873 )
+extents = Vector2( 26.3667, 148.854 )
 
 [sub_resource type="RectangleShape2D" id=10]
 
 custom_solver_bias = 0.0
-extents = Vector2( 18.2939, 77.8564 )
+extents = Vector2( 42.1859, 77.8564 )
 
 [sub_resource type="RectangleShape2D" id=11]
 
@@ -167,12 +169,19 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 180, 44.2918 )
 
-[node name="root" type="Container" index="0"]
+[sub_resource type="RectangleShape2D" id=17]
+
+custom_solver_bias = 0.0
+extents = Vector2( 71.7901, 41.6942 )
+
+[node name="root" type="Container"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 2.0
+margin_bottom = 2.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -333,6 +342,7 @@ texture = ExtResource( 2 )
 
 [node name="textbox" type="Container" parent="." index="2"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -574,7 +584,7 @@ __meta__ = {
 
 [node name="table_static" type="StaticBody2D" parent="bg" index="0"]
 
-position = Vector2( -76.2386, -472.311 )
+position = Vector2( -280.295, -450.545 )
 scale = Vector2( 2.88773, 3.48419 )
 input_pickable = false
 collision_layer = 1
@@ -601,10 +611,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 399.538
-margin_top = 225.418
-margin_right = 439.538
-margin_bottom = 265.418
+margin_left = 188.0
+margin_top = 255.0
+margin_right = 228.0
+margin_bottom = 295.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -667,10 +677,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 659.0
-margin_top = 223.0
-margin_right = 699.0
-margin_bottom = 263.0
+margin_left = 465.0
+margin_top = 250.0
+margin_right = 505.0
+margin_bottom = 290.0
 rect_rotation = -0.546766
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
@@ -709,7 +719,7 @@ shape = SubResource( 8 )
 [node name="chair_static2" type="StaticBody2D" parent="bg/Container2" index="1"]
 
 editor/display_folded = true
-position = Vector2( 2.20786, 88.3957 )
+position = Vector2( 2.22089, 87.0354 )
 scale = Vector2( 2.99181, 2.99181 )
 input_pickable = false
 collision_layer = 1
@@ -746,19 +756,19 @@ bounce = 0.0
 
 [node name="Sprite" type="Sprite" parent="bg/door" index="0"]
 
-position = Vector2( 12.5383, -21.9671 )
-scale = Vector2( 5.84488, 5.84488 )
+position = Vector2( -804.957, -276.049 )
+scale = Vector2( 2.27949, 2.95265 )
 texture = ExtResource( 8 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg/door" index="1"]
 
-position = Vector2( 19.8094, -22.0002 )
-scale = Vector2( 1.36215, 1 )
+position = Vector2( -804.4, -273.655 )
+scale = Vector2( 1.36215, 0.447837 )
 shape = SubResource( 9 )
 
 [node name="Area2D" type="Area2D" parent="bg/door" index="2"]
 
-editor/display_folded = true
 position = Vector2( 22.1606, -23.2688 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -770,11 +780,14 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg/door/Area2D" index="0"]
 
-position = Vector2( -2.21619, 0 )
+position = Vector2( -827.187, -191.184 )
+scale = Vector2( 0.89845, 0.359987 )
 shape = SubResource( 10 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Container4" type="Container" parent="bg" index="4"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -983,7 +996,7 @@ blend_times = [  ]
 [node name="Area2D" type="Area2D" parent="bg" index="7"]
 
 editor/display_folded = true
-position = Vector2( 411, 219 )
+position = Vector2( 362.027, 231.243 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -994,9 +1007,77 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Area2D" index="0"]
 
-position = Vector2( 120, 70 )
+position = Vector2( -28.2807, 67.2793 )
 scale = Vector2( 1, 2.7093 )
 shape = SubResource( 16 )
+
+[node name="Sala" type="Container" parent="bg" index="8"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Sillon1" type="StaticBody2D" parent="bg/Sala" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Sala/Sillon1" index="0"]
+
+position = Vector2( 758.263, 342.387 )
+shape = SubResource( 17 )
+
+[node name="Sprite3" type="Sprite" parent="bg/Sala/Sillon1" index="1"]
+
+position = Vector2( 938.717, 341.135 )
+scale = Vector2( 2.18036, 2.6191 )
+texture = ExtResource( 13 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sillon2" type="StaticBody2D" parent="bg/Sala" index="1"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="bg/Sala/Sillon2" index="0"]
+
+position = Vector2( 940.313, 340.717 )
+shape = SubResource( 17 )
+
+[node name="Sprite2" type="Sprite" parent="bg/Sala/Sillon2" index="1"]
+
+position = Vector2( 757.787, 341.135 )
+scale = Vector2( 2.18036, 2.6191 )
+texture = ExtResource( 13 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="bg/Sala" index="2"]
+
+position = Vector2( 850.896, 210.825 )
+rotation = 1.5708
+scale = Vector2( 2.06768, 2.76482 )
+texture = ExtResource( 14 )
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="body_entered" from="bg/door/Area2D" to="." method="_on_Area2D_body_entered"]
 
