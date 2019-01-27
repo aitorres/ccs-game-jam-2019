@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/clouds.png-af54c13c68df5dff21204eca32771f44.stex"
+path="res://.import/silla-espalda.png-99a1031358b4fe919006197792fe6d68.stex"
 
 [deps]
 
-source_file="res://assets/sprites/Scene 6 H - Mountain/clouds.png"
-dest_files=[ "res://.import/clouds.png-af54c13c68df5dff21204eca32771f44.stex" ]
+source_file="res://assets/sprites/Scene 1 H - Work/silla-espalda.png"
+dest_files=[ "res://.import/silla-espalda.png-99a1031358b4fe919006197792fe6d68.stex" ]
 
 [params]
 

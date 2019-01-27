@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/clouds.png-af54c13c68df5dff21204eca32771f44.stex"
+path="res://.import/there_man.png-745561ebce9de057d81bb8a4fa9d7d22.stex"
 
 [deps]
 
-source_file="res://assets/sprites/Scene 6 H - Mountain/clouds.png"
-dest_files=[ "res://.import/clouds.png-af54c13c68df5dff21204eca32771f44.stex" ]
+source_file="res://assets/sprites/Scene 9 T - Reunion/there_man.png"
+dest_files=[ "res://.import/there_man.png-745561ebce9de057d81bb8a4fa9d7d22.stex" ]
 
 [params]
 

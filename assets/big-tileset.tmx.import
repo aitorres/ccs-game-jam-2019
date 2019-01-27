@@ -2,13 +2,11 @@
 
 importer="vnen.tiled_importer"
 type="PackedScene"
-path="res://.import/big-tileset.tmx-b87a71f958a0e63bdd59d4bd88d33353.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/big-tileset.tmx"
-dest_files=[ "res://.import/big-tileset.tmx-b87a71f958a0e63bdd59d4bd88d33353.scn" ]
-
 [params]
 
 custom_properties=true

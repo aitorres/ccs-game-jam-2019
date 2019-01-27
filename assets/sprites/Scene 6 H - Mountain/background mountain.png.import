@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background mountain.png-ee5de1a50e89c4fac4d729ed6a428680.stex"
+path="res://.import/background mountain.png-961a429202a5155bed5840271212880d.stex"
 
 [deps]
 
-source_file="res://assets/sprites/Scene 6/background mountain.png"
-dest_files=[ "res://.import/background mountain.png-ee5de1a50e89c4fac4d729ed6a428680.stex" ]
+source_file="res://assets/sprites/Scene 6 H - Mountain/background mountain.png"
+dest_files=[ "res://.import/background mountain.png-961a429202a5155bed5840271212880d.stex" ]
 
 [params]
 
