@@ -19,7 +19,7 @@ func _on_try_to_leave(body):
 		if change_song:
 			AudioManager.changeSong(next_song)
 		AudioManager.playDoorSound()
-		get_tree().change_scene(next_scene)
+		get_tree().change_scene("res://MessageScreen.tscn")
 
 func _call_mostrar_mensaje(body, mensaje):
 	if not (body is StaticBody2D):

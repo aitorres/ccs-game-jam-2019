@@ -57,22 +57,22 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=8]
+
+custom_solver_bias = 0.0
+extents = Vector2( 6.14746, 10 )
+
 [sub_resource type="RectangleShape2D" id=9]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="RectangleShape2D" id=7]
-
-custom_solver_bias = 0.0
-extents = Vector2( 6.14746, 10 )
-
-[sub_resource type="RectangleShape2D" id=8]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
-
-[node name="root" type="Container"]
+[node name="root" type="Container" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -418,7 +418,7 @@ audio_bus_name = "Master"
 
 position = Vector2( 0, -0.755866 )
 scale = Vector2( 1, 5.73616 )
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 
 [node name="Sprite2" type="Sprite" parent="Container" index="1"]
 
@@ -443,7 +443,7 @@ audio_bus_name = "Master"
 
 position = Vector2( 0, -0.755866 )
 scale = Vector2( 1, 5.73616 )
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 
 [node name="Sprite3" type="Sprite" parent="Container" index="2"]
 
@@ -466,7 +466,7 @@ audio_bus_name = "Master"
 
 position = Vector2( 1291.15, -7.60547 )
 scale = Vector2( 1, 5.73616 )
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 
 [node name="Sprite4" type="Sprite" parent="Container" index="3"]
 
@@ -491,7 +491,7 @@ audio_bus_name = "Master"
 
 position = Vector2( 2613.13, -7.60547 )
 scale = Vector2( 1, 5.73616 )
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 
 [node name="Sprite5" type="Sprite" parent="Container" index="4"]
 
@@ -513,7 +513,7 @@ audio_bus_name = "Master"
 
 position = Vector2( 3855.66, -1.42371 )
 scale = Vector2( 1, 5.73616 )
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 
 [node name="Sprite6" type="Sprite" parent="Container" index="5"]
 
@@ -537,7 +537,7 @@ audio_bus_name = "Master"
 
 position = Vector2( 5308.38, -1.42371 )
 scale = Vector2( 1, 5.73616 )
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 
 [node name="Sprite7" type="Sprite" parent="Container" index="6"]
 
@@ -559,7 +559,7 @@ audio_bus_name = "Master"
 
 position = Vector2( 5308.38, -1.42371 )
 scale = Vector2( 1, 5.73616 )
-shape = SubResource( 9 )
+shape = SubResource( 7 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Container" index="7"]
 
@@ -596,13 +596,13 @@ audio_bus_name = "Master"
 
 position = Vector2( 332.118, -105.827 )
 scale = Vector2( 2.00219, 6.17149 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Container/StaticBody2D" index="2"]
 
 position = Vector2( 4428.28, -5.55435 )
 scale = Vector2( 1, 5.71664 )
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="Sprite" type="Sprite" parent="." index="6"]
 
