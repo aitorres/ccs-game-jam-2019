@@ -25,7 +25,7 @@ script/source = "extends Container
 # var a = 2
 # var b = \"textvar\"
 
-export(bool) var change_song = false
+export(bool) var change_song = true
 export var next_song = 1
 export var next_scene = \"res://HomeThereScene.tscn\"
 export var poem_container_path = \"textbox/Container/Background/poem\"
@@ -270,7 +270,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = SubResource( 1 )
-change_song = false
+change_song = true
 next_song = 1
 next_scene = "res://HomeThereScene.tscn"
 poem_container_path = "textbox/Container/Background/poem"
