@@ -3,7 +3,9 @@ extends Control
 var music = [
     preload("res://assets/music/baja-1.ogg"),
     preload("res://assets/music/Intermedio.ogg"),
-    preload("res://assets/music/baja-incertidumbre.ogg")
+    preload("res://assets/music/alta-2.ogg"),
+    preload("res://assets/music/baja-incertidumbre.ogg"),
+    preload("res://assets/music/alta-final.ogg"),
 ]
 
 var currSong = 0
@@ -24,6 +26,10 @@ var initial_fadein = false
 var init_crossfade = false
 
 func _ready():
+
+    for song in music:
+        song.set_loop(true) 
+
     var sampler1 = AudioStreamPlayer.new()
     add_child(sampler1)
     sampler1.volume_db = MIN_VOL
@@ -54,8 +60,11 @@ func crossFadeSamplers(sampID, vol):
     lerpSampler(sampID, vol)
     if sampID + 1 >= samplers.size():
         lerpSampler(0, 1.0 - vol)
+        #print(String(sampID) + " a " + String(vol) + " " + String(0) + " " + String(1.0 - vol))
     else:
-        lerpSampler(sampID, 1.0 - vol)
+        lerpSampler(sampID + 1, 1.0 - vol)
+        #print(String(sampID) + " a " + String(vol) + " " + String(sampID + 1) + " " + String(1.0 - vol))
+
 
 
     
@@ -65,6 +74,8 @@ func _process(delta):
             accTime += delta
             lerpSampler(currSampler, clamp(accTime/fadeTime, 0.0, 1.0))
         else:
+            print("Initial Fade In Done")
+            lerpSampler(currSampler, 1.0)
             initial_fadein = false
             accTime = 0.0
     elif init_crossfade && !initial_fadein:
@@ -72,6 +83,8 @@ func _process(delta):
             accTime += delta
             crossFadeSamplers(currSampler, clamp(accTime/fadeTime, 0.0, 1.0))
         else:
+            print("Cross Fade Done")
+            lerpSampler(currSampler, 1.0)
             init_crossfade = false
             samplers[prevSampler].stop()
             accTime = 0.0
@@ -84,15 +97,19 @@ func _process(delta):
             else:
                 crossFadeSamplers(currSampler, w)
         else:
+            print("Half Cross Fade Done")
+            lerpSampler(currSampler, 1.0)
             init_crossfade = false
             initial_fadein = false
             samplers[prevSampler].stop()
             accTime = 0.0
 
 func changeSong(song):
+    print("Prev Song: " + String(currSong) + " New Song:" + String(song))
     currSong = song % music.size()
     prevSampler = currSampler
     currSampler = (currSampler + 1) % samplers.size()
+    print("CurrSamp: " + String(currSampler) + " PrevSamp: " + String(prevSampler))
     samplers[currSampler].stream = music[currSong]
     samplers[currSampler].play()
 
@@ -100,4 +117,5 @@ func changeSong(song):
         prevVol = 1.0 - samplersVol[prevSampler]
         initial_fadein = true
 
+    accTime = 0.0
     init_crossfade = true
