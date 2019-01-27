@@ -3,7 +3,9 @@ extends Control
 var music = [
     preload("res://assets/music/baja-1.ogg"),
     preload("res://assets/music/Intermedio.ogg"),
-    preload("res://assets/music/baja-incertidumbre.ogg")
+    preload("res://assets/music/alta-2.ogg"),
+    preload("res://assets/music/baja-incertidumbre.ogg"),
+    preload("res://assets/music/alta-final.ogg"),
 ]
 
 var currSong = 0
@@ -100,4 +102,5 @@ func changeSong(song):
         prevVol = 1.0 - samplersVol[prevSampler]
         initial_fadein = true
 
+    accTime = 0.0
     init_crossfade = true

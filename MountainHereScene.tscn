@@ -1,36 +1,15 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://WASDmovement.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/characters/here_man.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/Scene 6/clouds-3.png" type="Texture" id=3]
-[ext_resource path="res://assets/sprites/Scene 6/clouds-4.png" type="Texture" id=4]
-[ext_resource path="res://assets/montain background.png" type="Texture" id=5]
-[ext_resource path="res://assets/sprites/Scene 6/mountains.png" type="Texture" id=6]
-[ext_resource path="res://assets/sprites/Scene 6/background mountain.png" type="Texture" id=7]
-[ext_resource path="res://assets/fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=8]
-[ext_resource path="res://scripts/LongText.gd" type="Script" id=9]
-
-[sub_resource type="GDScript" id=1]
-
-script/source = "extends Container
-
-export var next_song = 1
-export var next_scene = \"res://Credits.tscn\"
-export var poem_container_path = \"textbox/Container/Background/poem\"
-
-# class member variables go here, for example:
-# var a = 2
-# var b = \"textvar\"
-
-func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	pass
-
-func _process(delta):
-	if get_node(poem_container_path).done:
-		get_tree().change_scene(next_scene)
-"
+[ext_resource path="res://SceneManager.gd" type="Script" id=1]
+[ext_resource path="res://WASDmovement.gd" type="Script" id=2]
+[ext_resource path="res://assets/sprites/characters/here_man.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/Scene 6/clouds-3.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/Scene 6/clouds-4.png" type="Texture" id=5]
+[ext_resource path="res://assets/montain background.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/Scene 6/mountains.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/Scene 6/background mountain.png" type="Texture" id=8]
+[ext_resource path="res://assets/fonts/ARCADECLASSIC.TTF" type="DynamicFontData" id=9]
+[ext_resource path="res://scripts/LongText.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -93,7 +72,7 @@ size = 70
 use_mipmaps = false
 use_filter = false
 extra_spacing_char = 5
-font_data = ExtResource( 8 )
+font_data = ExtResource( 9 )
 _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [node name="root" type="Container" index="0"]
@@ -108,7 +87,8 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = SubResource( 1 )
+script = ExtResource( 1 )
+change_song = true
 next_song = 1
 next_scene = "res://Credits.tscn"
 poem_container_path = "textbox/Container/Background/poem"
@@ -122,7 +102,7 @@ input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 _sections_unfolded = [ "Z Index", "collision" ]
 __meta__ = {
 "_edit_group_": true,
@@ -141,7 +121,7 @@ shape = SubResource( 2 )
 
 position = Vector2( 0.24791, -13.277 )
 scale = Vector2( 0.366068, 0.22259 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="Left Wall" type="StaticBody2D" parent="." index="1"]
 
@@ -270,7 +250,7 @@ size_flags_vertical = 1
 position = Vector2( 50.7505, -38.1803 )
 scale = Vector2( 0.4, 0.4 )
 z_index = 1
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Sprite2" type="Sprite" parent="Container" index="1"]
@@ -278,7 +258,7 @@ _sections_unfolded = [ "Transform", "Z Index" ]
 position = Vector2( 617.858, -41.0197 )
 scale = Vector2( 0.7, 0.7 )
 z_index = 1
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Animation", "Material", "Region", "Transform", "Visibility", "Z Index" ]
 
 [node name="TextureRect" type="TextureRect" parent="." index="7"]
@@ -298,7 +278,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 0
 __meta__ = {
@@ -321,7 +301,7 @@ bounce = 0.0
 
 position = Vector2( 533.329, 210.256 )
 scale = Vector2( 1.96106, 3.59721 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TextureRect/StaticBody2D" index="1"]
 
@@ -345,7 +325,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 expand = true
 stretch_mode = 0
 
@@ -459,7 +439,7 @@ scroll_active = false
 scroll_following = false
 selection_enabled = false
 override_selected_font_color = false
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 _sections_unfolded = [ "BBCode", "Size Flags", "Theme", "Visibility", "custom_constants", "custom_fonts" ]
 lineWaitTime = 0.5
 charWaitTime = 0.1
