@@ -8,7 +8,7 @@ var music = [
 
 var currSong = 0
 
-export(float, 0, 5, 0.00001) var fadeTime = 0.001
+export(float, 0, 5, 0.00001) var fadeTime = 3
 var accTime = 0.0
 
 var samplers = []
