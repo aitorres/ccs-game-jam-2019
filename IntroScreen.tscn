@@ -97,4 +97,12 @@ anims/fade = SubResource( 3 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
 
+stream = null
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+_sections_unfolded = [ "Pause" ]

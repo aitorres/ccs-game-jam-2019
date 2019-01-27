@@ -12,13 +12,13 @@ config_version=3
 
 config/name="Caracas Game Jam 2019"
 run/main_scene="res://TitleScreen.tscn"
-boot_splash/image="res://assets/splash.png"
 config/icon="res://icon.png"
 
 [autoload]
 
 global="*res://global.gd"
 music="*res://music.gd"
+AudioManager="*res://scripts/AudioManager.gd"
 
 [display]
 
@@ -44,7 +44,3 @@ ui_skip=[ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"
 
 environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
-
-[tiled_importer]
-
-enable_json_format=true

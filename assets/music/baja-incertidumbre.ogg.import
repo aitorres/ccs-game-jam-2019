@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/baja-incertidumbre.ogg-d74c37e2880ca2e437932bafd0c67a77.oggstr"
+
+[deps]
+
+source_file="res://assets/music/baja-incertidumbre.ogg"
+dest_files=[ "res://.import/baja-incertidumbre.ogg-d74c37e2880ca2e437932bafd0c67a77.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
