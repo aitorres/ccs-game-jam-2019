@@ -84,6 +84,12 @@ func _on_mirror_collide(body):
 			if mirror_node.done:
 				mirror_node.reset_config()
 				mirror_node.reset_text(true)
+
+
+
+func foto(body):
+	if not (body is StaticBody2D):
+		get_node(poem_container_path).reset_text(true)
 "
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -308,6 +314,7 @@ __meta__ = {
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." index="1"]
 
+editor/display_folded = true
 position = Vector2( 190, 610 )
 z_index = 10
 input_pickable = false
@@ -746,6 +753,7 @@ shape = SubResource( 7 )
 
 [node name="Area2D" type="Area2D" parent="bg/door" index="2"]
 
+editor/display_folded = true
 position = Vector2( 52, -444.681 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -838,6 +846,7 @@ shape = SubResource( 10 )
 
 [node name="Area2D" type="Area2D" parent="bg" index="2"]
 
+editor/display_folded = true
 position = Vector2( 411, 219 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -1034,7 +1043,7 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bg/Mesa con foto/Area2D" index="0"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="bg/Mesa con foto/Area2D" index="0"]
 
 position = Vector2( 979.05, 270.232 )
 scale = Vector2( 3.79419, 2.68922 )
@@ -1090,5 +1099,7 @@ texture = ExtResource( 17 )
 [connection signal="body_entered" from="bg/door/Area2D" to="." method="_on_Area2D_body_entered"]
 
 [connection signal="body_entered" from="bg/Area2D" to="." method="_on_real_trigger"]
+
+[connection signal="body_entered" from="bg/Mesa con foto/Area2D" to="." method="foto"]
 
 
