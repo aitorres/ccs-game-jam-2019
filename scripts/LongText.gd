@@ -38,9 +38,12 @@ var textCenter =  Vector2(0,0)
 
 var background = null
 
+func reset_config():
+	done = false
+	charComplete = false
+	textComplete = false
+
 func reset_text(state):
-	print("Hola")
-	print(state)
 	start = state
 	done = false
 	if background == null:

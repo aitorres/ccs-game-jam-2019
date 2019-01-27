@@ -19,6 +19,7 @@ var credits = [
 ]
 
 var counter = 0
+var next_exit = false
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -27,7 +28,11 @@ func _ready():
 	
 func _process(delta):
 	if Input.is_action_pressed("ui_skip"):
-    	counter = credits.size()
+		if not next_exit:
+			next_exit = true
+			counter = credits.size()
+		else:
+			get_tree().change_scene("res://WorkHereScene.tscn")
 
 func next_credit():
 	if (counter < credits.size()):
