@@ -18,6 +18,7 @@ func _on_try_to_leave(body):
 		yield(get_tree().create_timer(6), "timeout")
 		if change_song:
 			AudioManager.changeSong(next_song)
+		AudioManager.playDoorSound()
 		get_tree().change_scene(next_scene)
 
 func _call_mostrar_mensaje(body, mensaje):
@@ -35,5 +36,37 @@ func first_area(body):
 func second_area(body):
 	_call_mostrar_mensaje(
 		body,
-		"this is a temproary message"
+		"but there is always a light, big or small"
+	)
+
+
+func third_area(body):
+	_call_mostrar_mensaje(
+		body,
+		"a fierce strength that comes from within youself"
+	)
+
+
+func fourth_area(body):
+	_call_mostrar_mensaje(
+		body,
+		"and helps you through every battle, no matter how hard"
+	)
+
+func fifth_area(body):
+	_call_mostrar_mensaje(
+		body,
+		"this will surely be a difficult journey"
+	)
+
+func sixth_area(body):
+	_call_mostrar_mensaje(
+		body,
+		"but a great one nonetheless"
+	)
+
+func he_creado_siete_putas_funciones_iguales___como_crees_que_se_llama_esta(body):
+	_call_mostrar_mensaje(
+		body,
+		"and it is finally time"
 	)

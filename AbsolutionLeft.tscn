@@ -104,7 +104,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 can_move = true
-speed = 180
+speed = 200
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D" index="0"]
 
@@ -123,7 +123,6 @@ _sections_unfolded = [ "Z Index" ]
 
 [node name="textbox" type="Container" parent="KinematicBody2D" index="1"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -217,7 +216,7 @@ override_selected_font_color = false
 script = ExtResource( 5 )
 _sections_unfolded = [ "BBCode", "Size Flags", "Theme", "Visibility", "custom_constants", "custom_fonts" ]
 lineWaitTime = 0.5
-charWaitTime = 0.1
+charWaitTime = 0.05
 vibrateWaitTime = 0.001
 longText = "i am not reaching out in the dark
 \\\\cfor today i have conquered the mountain
@@ -245,7 +244,7 @@ current = true
 zoom = Vector2( 1, 1 )
 limit_left = -10000000
 limit_top = -10000000
-limit_right = 9000
+limit_right = 1000000
 limit_bottom = 10000000
 limit_smoothed = false
 drag_margin_h_enabled = true
@@ -265,6 +264,7 @@ _sections_unfolded = [ "Limit" ]
 
 [node name="Left Wall" type="StaticBody2D" parent="." index="1"]
 
+editor/display_folded = true
 position = Vector2( 67.6282, 358.374 )
 scale = Vector2( -2.09213, 11.158 )
 z_index = 1
@@ -291,6 +291,7 @@ _sections_unfolded = [ "Z Index" ]
 
 [node name="Left Wall2" type="StaticBody2D" parent="." index="2"]
 
+editor/display_folded = true
 position = Vector2( 9022.31, 565.724 )
 scale = Vector2( -2.09213, 11.158 )
 z_index = 1
@@ -378,6 +379,7 @@ __meta__ = {
 
 [node name="Container" type="Container" parent="." index="5"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -445,6 +447,24 @@ shape = SubResource( 9 )
 position = Vector2( -1769.65, 9.45105 )
 texture = ExtResource( 6 )
 
+[node name="Area2D3" type="Area2D" parent="Container/Sprite3" index="0"]
+
+editor/display_folded = true
+position = Vector2( -1290.6, -6.15161 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Sprite3/Area2D3" index="0"]
+
+position = Vector2( 1291.15, -7.60547 )
+scale = Vector2( 1, 5.73616 )
+shape = SubResource( 9 )
+
 [node name="Sprite4" type="Sprite" parent="Container" index="3"]
 
 position = Vector2( -443.66, 6.36017 )
@@ -452,10 +472,45 @@ z_index = 26
 texture = ExtResource( 6 )
 _sections_unfolded = [ "Z Index" ]
 
+[node name="Area2D4" type="Area2D" parent="Container/Sprite4" index="0"]
+
+editor/display_folded = true
+position = Vector2( -2616.59, -3.06073 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Sprite4/Area2D4" index="0"]
+
+position = Vector2( 2613.13, -7.60547 )
+scale = Vector2( 1, 5.73616 )
+shape = SubResource( 9 )
+
 [node name="Sprite5" type="Sprite" parent="Container" index="4"]
 
 position = Vector2( 789.604, 9.45105 )
 texture = ExtResource( 6 )
+
+[node name="Area2D5" type="Area2D" parent="Container/Sprite5" index="0"]
+
+position = Vector2( -3849.85, -6.15161 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Sprite5/Area2D5" index="0"]
+
+position = Vector2( 3855.66, -1.42371 )
+scale = Vector2( 1, 5.73616 )
+shape = SubResource( 9 )
 
 [node name="Sprite6" type="Sprite" parent="Container" index="5"]
 
@@ -464,10 +519,44 @@ z_index = 29
 texture = ExtResource( 6 )
 _sections_unfolded = [ "Z Index" ]
 
+[node name="Area2D6" type="Area2D" parent="Container/Sprite6" index="0"]
+
+position = Vector2( -5311.84, -3.06067 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Sprite6/Area2D6" index="0"]
+
+position = Vector2( 5308.38, -1.42371 )
+scale = Vector2( 1, 5.73616 )
+shape = SubResource( 9 )
+
 [node name="Sprite7" type="Sprite" parent="Container" index="6"]
 
 position = Vector2( 3642.3, 5.3407 )
 texture = ExtResource( 6 )
+
+[node name="Area2D7" type="Area2D" parent="Container/Sprite7" index="0"]
+
+position = Vector2( -5314.74, -5.13214 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Sprite7/Area2D7" index="0"]
+
+position = Vector2( 5308.38, -1.42371 )
+scale = Vector2( 1, 5.73616 )
+shape = SubResource( 9 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Container" index="7"]
 
@@ -490,7 +579,7 @@ _sections_unfolded = [ "Z Index" ]
 
 [node name="Area2D" type="Area2D" parent="Container/StaticBody2D" index="1"]
 
-position = Vector2( 4354.14, 0 )
+position = Vector2( 4104.3, 101.785 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -524,6 +613,16 @@ _sections_unfolded = [ "Region", "Transform", "Z Index" ]
 [connection signal="body_entered" from="Container/Sprite/Area2D" to="." method="first_area"]
 
 [connection signal="body_entered" from="Container/Sprite2/Area2D2" to="." method="second_area"]
+
+[connection signal="body_entered" from="Container/Sprite3/Area2D3" to="." method="third_area"]
+
+[connection signal="body_entered" from="Container/Sprite4/Area2D4" to="." method="fourth_area"]
+
+[connection signal="body_entered" from="Container/Sprite5/Area2D5" to="." method="fifth_area"]
+
+[connection signal="body_entered" from="Container/Sprite6/Area2D6" to="." method="sixth_area"]
+
+[connection signal="body_entered" from="Container/Sprite7/Area2D7" to="." method="he_creado_siete_putas_funciones_iguales___como_crees_que_se_llama_esta"]
 
 [connection signal="body_entered" from="Container/StaticBody2D/Area2D" to="." method="_on_try_to_leave"]
 
