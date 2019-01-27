@@ -60,10 +60,10 @@ func crossFadeSamplers(sampID, vol):
     lerpSampler(sampID, vol)
     if sampID + 1 >= samplers.size():
         lerpSampler(0, 1.0 - vol)
-        print(String(sampID) + " a " + String(vol) + " " + String(0) + " " + String(1.0 - vol))
+        #print(String(sampID) + " a " + String(vol) + " " + String(0) + " " + String(1.0 - vol))
     else:
         lerpSampler(sampID + 1, 1.0 - vol)
-        print(String(sampID) + " a " + String(vol) + " " + String(sampID + 1) + " " + String(1.0 - vol))
+        #print(String(sampID) + " a " + String(vol) + " " + String(sampID + 1) + " " + String(1.0 - vol))
 
 
 
