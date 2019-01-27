@@ -127,6 +127,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+_sections_unfolded = [ "Rect" ]
 
 [node name="Text2" type="RichTextLabel" parent="Panel" index="0"]
 
@@ -162,13 +163,16 @@ script = ExtResource( 3 )
 _sections_unfolded = [ "Anchor", "BBCode", "Rect", "Size Flags", "custom_fonts", "custom_styles" ]
 lineWaitTime = 0.5
 charWaitTime = 0.1
-longText = "Hola [color=red]Adios[/color]
-Probando \\\\nLineas [img]res://icon.png[/img]
+vibrateWaitTime = 0.001
+longText = "[vibrate=0.001,5]Hola [color=red]Adios[/color]
+[vibrate]Probando \\\\nLineas [img]res://icon.png[/img]
 \\\\t[color=aqua]Tabs[/color]
 \\\\cVacio
-\\\\c[char=0.01]Asdasdasdadadada"
+\\\\c[vibrate=0.001][char=0.01]Asdasdasdadadada"
 start = true
 startOnFirstLine = false
+vibrate = true
 done = false
+vibrateMax = 20
 
 
