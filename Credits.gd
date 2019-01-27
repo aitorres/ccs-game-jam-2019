@@ -4,7 +4,7 @@ var credits = [
 	"CONCEPTUAL ART LEAD\nAndres Ignacio Torres",
 	"PROGRAMMING LEAD\nChristian Oliveros",
 	"MUSIC LEAD\nDavid Rodriguez",
-	"DESIGN LEAD\nAntonella Requena",
+	"ART LEAD\nAntonella Requena",
 	"INSPIRED BY\nLOS DIAS ARQUEADOS\nWRITTEN BY\nLUIS EDUARDO BARRAZA",
 	"FROM USB VE\nWITH LOVE",
 	"Caracas Game Jam\n2019",
