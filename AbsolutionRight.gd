@@ -12,7 +12,7 @@ func _mostrar_mensaje(mensaje):
 
 func _on_try_to_leave(body):
 	if not (body is StaticBody2D):
-		get_node(poem_container_path).longText = "time to go back to myself."
+		get_node(poem_container_path).longText = "time to go back home."
 		get_node(poem_container_path).reset_config()
 		get_node(poem_container_path).reset_text(true)
 		yield(get_tree().create_timer(6), "timeout")
@@ -26,7 +26,7 @@ func _call_mostrar_mensaje(body, mensaje):
 		_mostrar_mensaje(
 			mensaje
 		)
-		
+
 func he_creado_siete_putas_funciones_iguales___como_crees_que_se_llama_esta(body):
 	_call_mostrar_mensaje(
 		body,
@@ -43,7 +43,7 @@ func sixth_area(body):
 func fifth_area(body):
 	_call_mostrar_mensaje(
 		body,
-		"a fierce strength that comes from within youself"
+		"a fierce strength that comes from within yourself"
 	)
 
 
@@ -56,7 +56,7 @@ func fourth_area(body):
 func third_area(body):
 	_call_mostrar_mensaje(
 		body,
-		"this will surely be a difficult journey"
+		"this has proven to be a difficult journey"
 	)
 
 func second_area(body):

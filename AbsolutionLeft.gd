@@ -43,7 +43,7 @@ func second_area(body):
 func third_area(body):
 	_call_mostrar_mensaje(
 		body,
-		"a fierce strength that comes from within youself"
+		"a fierce strength that comes from within yourself"
 	)
 
 
