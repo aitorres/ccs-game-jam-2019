@@ -89,6 +89,8 @@ change_song = true
 next_song = 1
 next_scene = "res://ParkScene.tscn"
 poem_container_path = "textbox/Container/Background/poem"
+use_final_text = true
+longText = "time to go back and shine like a star"
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." index="0"]
 
