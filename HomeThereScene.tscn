@@ -102,7 +102,7 @@ func _on_mirror_collide(body):
 			mirror_node.longText = \"...but for a second i glimpse a smile on my face\"
 			mirror_node.reset_config()
 			mirror_node.reset_text(true)
-			aux_node = true
+			aux_node_active = true
 		else:
 			if mirror_node_active:
 				mirror_node.reset_config()
@@ -327,7 +327,6 @@ __meta__ = {
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="." index="1"]
 
-editor/display_folded = true
 position = Vector2( 190, 610 )
 z_index = 10
 input_pickable = false
@@ -357,7 +356,7 @@ position = Vector2( -1.13205, -16.066 )
 scale = Vector2( 0.366068, 0.22259 )
 texture = ExtResource( 2 )
 flip_h = true
-_sections_unfolded = [ "Offset", "Region" ]
+_sections_unfolded = [ "Offset", "Region", "Z Index" ]
 
 [node name="TextureRect" type="TextureRect" parent="." index="2"]
 
@@ -501,6 +500,7 @@ vibrateMax = 20
 
 [node name="aux_textbox" type="Container" parent="." index="4"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -524,7 +524,6 @@ __meta__ = {
 
 [node name="Container" type="Container" parent="aux_textbox" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -610,6 +609,7 @@ vibrateMax = 20
 
 [node name="mirror_textbox" type="Container" parent="." index="5"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -718,6 +718,7 @@ vibrateMax = 20
 
 [node name="bg" type="TextureRect" parent="." index="6"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -737,6 +738,7 @@ stretch_mode = 0
 
 [node name="door" type="StaticBody2D" parent="bg" index="0"]
 
+editor/display_folded = true
 position = Vector2( 1, 479 )
 input_pickable = false
 collision_layer = 1
@@ -915,19 +917,18 @@ __meta__ = {
 
 position = Vector2( 1011, 439 )
 scale = Vector2( 3, 3 )
-z_index = 4096
+z_index = 2000
 texture = ExtResource( 11 )
 _sections_unfolded = [ "Z Index" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bg/desk" index="1"]
 
-position = Vector2( 1011, 452.5 )
+position = Vector2( 1011, 450.5 )
 scale = Vector2( 5.38462, 8.96154 )
 shape = SubResource( 13 )
 
 [node name="CHARI" type="StaticBody2D" parent="bg" index="5"]
 
-editor/display_folded = true
 position = Vector2( 901, 469 )
 input_pickable = false
 collision_layer = 1
@@ -994,7 +995,6 @@ shape = SubResource( 16 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="bg" index="7"]
 
-editor/display_folded = true
 position = Vector2( 541, 29 )
 input_pickable = false
 collision_layer = 1
@@ -1023,7 +1023,7 @@ scale = Vector2( 2.23684, 1.33224 )
 z_index = 2
 _sections_unfolded = [ "Z Index" ]
 nextMark = NodePath("../Area2D3")
-poemPath = NodePath("../aux_textbox/Container/Background/poem")
+poemPath = NodePath("../textbox/Container/Background/poem")
 
 [node name="Area2D" parent="." index="8" instance=ExtResource( 15 )]
 
@@ -1040,7 +1040,7 @@ position = Vector2( 159.415, 126.419 )
 scale = Vector2( 2.21857, 1.26803 )
 z_index = 2
 _sections_unfolded = [ "Z Index" ]
-poemPath = NodePath("../textbox/Container/Background/poem")
+poemPath = NodePath("../aux_textbox/Container/Background/poem")
 
 [connection signal="body_entered" from="bg/door/Area2D" to="." method="_on_Area2D_body_entered"]
 
